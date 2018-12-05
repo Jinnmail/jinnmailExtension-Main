@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/popup.css" />
+</head>
+
+<body class="main-container">
+    <div id="content-wrapper">
+        <div class="dialog" role="dialog" aria-labelledby="loginDialogTitle" id="loginDialog" style="display: block;  z-index: 1;">
+            <!-- <button class="focusCycler"></button> -->
+            <div class="dialogHeader icon leftIcon">
+                <div class="dialogHeaderInner"><span class="dialogHeaderTitle" id="loginDialogTitle">JinnMail</span></div>
+            </div>
+            <div class="page-title">Signup Here</div>
+            <div class="success-msg">Signup Success</div>
+            <div class="credintials-error"></div>
+            <div class="dialogContent dialogContentFixed">
+                <div dialogsection="main" id="loginView" class="lp-grid container gutter-sm">
+                    <div class="small-margins">
+                        <label for="loginDialogEmail" class="label first">Email</label>
+                                           </div>
+                    <div class="dropdownContainer" style="margin: 0px;">
+                        <div class="relative">
+                            <input class="dialogInput typeaheadDropdown clickToggles" id="signUpDialogEmail" dialogfield="email"
+                                type="email" spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="email-error">Invalid Email</div>
+                    <div class="row small-margins">
+                        <div class="col-8">
+                            <label class="label" for="loginDialogPassword">Password</label>
+                            <label class="error-summary" for="loginDialogPassword" style="display: none;">
+                                <div id="validatorSummaryPassword" class="row">
+                                    <div class="col-1">
+                                        <div class="validation-img "></div>
+                                    </div>
+                                    <div class="col-11"></div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <input class="dialogInput inputCapsMatter unknown" id="signUpDialogPassword" dialogfield="password"
+                            type="password" spellcheck="false">
+                        <!-- <button class="showKeyboard" title="Use Virtual Keyboard"></button> -->
+                        <div class="pull-right col-4 tabOrderChange">
+                            <!-- <a id="forgotPassword" href="javascript:void(0)">Recovery Help</a> -->
+                        </div>
+                    </div>
+                    <div class="password-error">Invalid Password</div>
+                    <div class="buttons centerButtons">
+                        <button id="signUpButton" class="nbtn rbtn">Signup</button>
+                    </div>
+                    <div class="content-pull-center gutter-bottom-xl">
+                        <div>
+                            <p class="hr">or</p>
+                        </div>
+                        <button id="newToLastPassLogin">Login</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <button class="focusCycler"></button> -->
+        </div>
+    </div>
+    <script src="../scripts/jQuery.js"></script>
+    <script src="../scripts/popup.js"></script>
+</body>
+
+</html>

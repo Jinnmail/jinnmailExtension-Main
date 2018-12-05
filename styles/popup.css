@@ -1,0 +1,303 @@
+.main-container{
+    /* width: 267px; */
+    /* height: 255px; */
+    margin: 0;
+    /* padding: 49px; */
+}
+
+
+
+
+
+/*  Custom Login page Styles Start From Here  */
+html{
+    transition: height ease 0.1s;
+    width: 354px;
+    /* height: 510px; */
+
+}
+.dialogHeaderInner{
+    text-align: center;
+}
+.dialogHeaderTitle{
+    font-size: 30px;
+}
+.nbtn {
+    background: white;
+    border: none;
+    box-shadow: 0px 1px 2px RGBA(0,0,0,.2);
+    text-align: center;
+    margin: 10px 4px;
+    padding: 10px 8px 9px 8px;
+    width: 200px;
+    cursor: pointer;
+    font-size: 21px;
+    line-height: 21px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border-bottom-width: 3px;
+    overflow: hidden;
+}
+#loginDialog .beforeButtons {
+    margin-top: 10px;
+}
+
+#loginDialog {
+    width: auto;
+    max-width: 100%;
+    background-color: #F2F4F5;
+    color:rgba(0, 0, 0, 0.5);
+}
+.dialog {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+}
+.dialog {
+    width: 100%;
+    width: calc(100% - 40px);
+    /* position: absolute; */
+    top: 20px;
+    bottom: 20px;
+    /* left: 20px; */
+    /* right: 20px; */
+    margin: auto;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: #F2F4F5;
+}
+#loginDialog .dialogHeader {
+    background-color: transparent;
+    padding: 10px 20px;
+}
+.dialogHeader.icon.leftIcon {
+    text-align: right;
+}
+#loginDialog .dialogContent {
+    padding: 0 20px 0 20px;
+}
+
+#loginDialog .dialogContent {
+    overflow: hidden;
+}
+.dialogContent {
+    padding: 20px;
+    overflow: auto;
+    position: relative;
+    top: -10px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+.dialogContent .dialogInput{
+    border: 1px solid #C4CCD1;
+    box-shadow: inset 0px 1px 3px 0px rgba(140, 150, 157, .3);
+    border-radius: 4px;
+    height: 46px;
+    width: 100%;
+    font-size: 20px;
+}
+#loginDialog .small-margins {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+#loginDialog .checkboxContainer:first-of-type {
+    width: 40%;
+    margin: 0;
+    font-size: 10px;
+}
+#loginDialog .checkboxContainer {
+    width: 60%;
+}
+#loginDialog .buttons {
+    padding: 0;
+    margin-top: 30px;
+}
+#loginDialog .rbtn {
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.dialog .rbtn {
+    width: 100%;
+    height: 50px;
+    padding: 0;
+}
+.rbtn {
+    background-color: #3A6BB3;
+    color: #FFF !important;
+    border-color: #3A6BB3;
+}
+.lp-grid .pull-left {
+    float: left !important;
+}
+.lp-grid .pull-right {
+    float: right !important;
+}
+#loginDialog .tabOrderChange {
+    margin-top: -75px;
+}
+#loginDialog #loginDialogRememberPassword {
+    margin: 0 0 0 40px;
+}
+#loginDialog .checkbox {
+    margin: 0;
+    height: 16px;
+    width: 16px;
+}
+.dialog .hr:before, .dialog .hr:after {
+    background-color: #8C969D;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+.dialog .hr:before, .dialog .hr:after {
+    background-color: #8C969D;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+#loginDialog{
+    /* height: 510px; */
+}
+#loginDialog .hr:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+#loginDialog .hr:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+#loginDialog .hr {
+    padding: 10px 40px;
+    font-size: 13px;
+    margin-bottom: 5px;
+    opacity: .4;
+    text-align: center;
+}
+
+
+#loginDialog #newToLastPass {
+    font-size: 15px;
+    cursor: pointer;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: .2px;
+    background: transparent;
+}
+#newToLastPass {
+    text-decoration: none;
+    margin-left: 5px;
+    cursor: pointer;
+}
+#loginDialog #newToLastPass {
+    color: #3A6BB3;
+    border: 0;
+}
+
+#loginDialog #newToLastPassLogin {
+    font-size: 15px;
+    cursor: pointer;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: .2px;
+    background: transparent;
+}
+#newToLastPassLogin {
+    text-decoration: none;
+    margin-left: 5px;
+    cursor: pointer;
+}
+#loginDialog #newToLastPassLogin {
+    color: #3A6BB3;
+    border: 0;
+}
+
+.lp-grid .gutter-bottom-xl {
+    margin-bottom: 20px;
+}
+.lp-grid .content-pull-center {
+    text-align: center;
+}
+#loginDialog a {
+    color: #D32D27;
+}
+#loginDialog .dialogHeader.icon.leftIcon {
+    background-position: 20px center;
+    background-size: 50%;   
+}
+#loginDialog .dialogHeader {
+    padding: 10px 30px;
+    background: transparent;
+}
+#loginDialog label {
+    color: #3F3F3A;
+}
+#loginDialog label {
+    margin: 0;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+.checkbox:checked + label, .checkboxContainer.selected > label {
+    background-image: url('images/vault_4.0/Check_Modal.png');
+}
+#loginDialog label {
+    margin: 0;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 20px;
+}
+#loginDialog .dialogHeader.icon.leftIcon {
+    background-position: 20px center;
+    background-size: 50%;
+}
+.page-title{
+    font-size: 21px;
+    text-align: center;
+    margin-top: 3px;
+}
+.email-error,
+.password-error,
+.credintials-error{
+    font-size: 14px;
+    color: red;
+    position: relative;
+    /* background: #fff; */
+    width: 95%;
+    padding: 8px;
+    display: none;
+    border-radius: 5px;
+    top: 10px;
+    /* text-align: center; */
+}
+.credintials-error{
+    /* display: block; */
+    background: red;
+    text-align: center;
+    margin: 0 16px;
+    width: auto;
+    padding: 10px 0;
+    color: #fff;
+}
+.success-msg{
+    padding: 10px 20px;
+    display: none;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+    background:green;
+    margin: 14px;
+    margin-bottom: 0;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/popup.css" />
+</head>
+
+<body class="main-container">
+    <div id="content-wrapper">
+        <div class="dialog" role="dialog" aria-labelledby="loginDialogTitle" id="loginDialog" style="display: block;  z-index: 1;">
+            <!-- <button class="focusCycler"></button> -->
+            <div class="dialogHeader icon leftIcon">
+                <div class="dialogHeaderInner"><span class="dialogHeaderTitle" id="loginDialogTitle">JinnMail</span></div>
+            </div>
+
+            <div class="page-title">Login Here</div>
+            <div class="success-msg">Login Success</div>
+            <div class="credintials-error"></div>
+            <div class="dialogContent dialogContentFixed">
+                <div dialogsection="main" id="loginView" class="lp-grid container gutter-sm">
+                    <div class="small-margins">
+                        <label for="loginDialogEmail" class="label first">Email</label>
+
+                    </div>
+                    <div class="dropdownContainer">
+                        <div class="relative">
+                            <input type="email" class="dialogInput typeaheadDropdown clickToggles" id="loginDialogEmail"
+                                dialogfield="email" required spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="email-error">Invalid Email</div>
+                    <div class="row small-margins">
+                        <div class="col-8">
+                            <label class="label" for="loginDialogPassword">Password</label>
+
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <input class="dialogInput inputCapsMatter unknown" minlength="8" id="loginDialogPassword"
+                            dialogfield="password" type="password" spellcheck="false" required>
+                        <div class="pull-right col-4 tabOrderChange">
+                        </div>
+                    </div>
+                    <div class="password-error">Password length should be greater than 8 characters</div>
+                    <div class="buttons centerButtons">
+                        <input type="submit" id="logInButton" value="Log In" class="nbtn rbtn">
+                    </div>
+                    <div class="content-pull-center gutter-bottom-xl">
+                        <div>
+                            <p class="hr">or</p>
+                        </div>
+                        <button id="newToLastPass">Create an account</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <button class="focusCycler"></button> -->
+        </div>
+    </div>
+    <script src="./scripts/jQuery.js"></script>
+    <script src="./scripts/popup.js"></script>
+</body>
+
+</html>
