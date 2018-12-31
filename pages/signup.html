@@ -19,18 +19,18 @@
             <div class="dialogContent dialogContentFixed">
                 <div dialogsection="main" id="loginView" class="lp-grid container gutter-sm">
                     <div class="small-margins">
-                        <label for="loginDialogEmail" class="label first">Email</label>
+                        <label for="loginDialogEmail" class="label first">Email<span>*</span></label>
                                            </div>
                     <div class="dropdownContainer" style="margin: 0px;">
                         <div class="relative">
                             <input class="dialogInput typeaheadDropdown clickToggles" id="signUpDialogEmail" dialogfield="email"
-                                type="email" spellcheck="false">
+                                type="text" spellcheck="false" required>
                         </div>
                     </div>
                     <div class="email-error">Invalid Email</div>
                     <div class="row small-margins">
                         <div class="col-8">
-                            <label class="label" for="loginDialogPassword">Password</label>
+                            <label class="label" for="loginDialogPassword">Password<span>*</span></label>
                             <label class="error-summary" for="loginDialogPassword" style="display: none;">
                                 <div id="validatorSummaryPassword" class="row">
                                     <div class="col-1">
@@ -50,7 +50,7 @@
                             <!-- <a id="forgotPassword" href="javascript:void(0)">Recovery Help</a> -->
                         </div>
                     </div>
-                    <div class="password-error">Invalid Password</div>
+                    <div class="password-error">Password length should be greater than 7 characters</div>
                     <div class="buttons centerButtons">
                         <button id="signUpButton" class="nbtn rbtn">Signup</button>
                     </div>

@@ -20,7 +20,7 @@
             <div class="dialogContent dialogContentFixed">
                 <div dialogsection="main" id="loginView" class="lp-grid container gutter-sm">
                     <div class="small-margins">
-                        <label for="loginDialogEmail" class="label first">Email</label>
+                        <label for="loginDialogEmail" class="label first">Email<span>*</span></label>
 
                     </div>
                     <div class="dropdownContainer">
@@ -32,17 +32,16 @@
                     <div class="email-error">Invalid Email</div>
                     <div class="row small-margins">
                         <div class="col-8">
-                            <label class="label" for="loginDialogPassword">Password</label>
+                            <label class="label" for="loginDialogPassword">Password<span>*</span></label>
 
                         </div>
                     </div>
                     <div class="relative">
                         <input class="dialogInput inputCapsMatter unknown" minlength="8" id="loginDialogPassword"
                             dialogfield="password" type="password" spellcheck="false" required>
-                        <div class="pull-right col-4 tabOrderChange">
-                        </div>
                     </div>
-                    <div class="password-error">Password length should be greater than 8 characters</div>
+                    <div class="password-error">Password length should be greater than 7 characters</div>
+                    <a href="#" class="forgot-password">Forgot Password ?</a>
                     <div class="buttons centerButtons">
                         <input type="submit" id="logInButton" value="Log In" class="nbtn rbtn">
                     </div>

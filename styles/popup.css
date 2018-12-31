@@ -1,13 +1,6 @@
 .main-container{
-    /* width: 267px; */
-    /* height: 255px; */
     margin: 0;
-    /* padding: 49px; */
 }
-
-
-
-
 
 /*  Custom Login page Styles Start From Here  */
 html{
@@ -97,7 +90,9 @@ html{
     box-shadow: inset 0px 1px 3px 0px rgba(140, 150, 157, .3);
     border-radius: 4px;
     height: 46px;
+    box-sizing: border-box;
     width: 100%;
+    padding-left: 10px;
     font-size: 20px;
 }
 #loginDialog .small-margins {
@@ -228,9 +223,6 @@ html{
 .lp-grid .content-pull-center {
     text-align: center;
 }
-#loginDialog a {
-    color: #D32D27;
-}
 #loginDialog .dialogHeader.icon.leftIcon {
     background-position: 20px center;
     background-size: 50%;   
@@ -241,6 +233,16 @@ html{
 }
 #loginDialog label {
     color: #3F3F3A;
+}
+#loginDialog label span{
+    color: red;
+}
+.forgot-password{
+    color: #3A6BB3;
+    display: block;
+    text-align: right;
+    margin-top: 5px;
+    text-decoration: none;
 }
 #loginDialog label {
     margin: 0;
@@ -272,13 +274,15 @@ html{
 .credintials-error{
     font-size: 14px;
     color: red;
-    position: relative;
+    /* position: relative; */
     /* background: #fff; */
     width: 95%;
-    padding: 8px;
+    padding: 2px;
+    padding-left: 0px;
     display: none;
     border-radius: 5px;
-    top: 10px;
+    margin-top: 2px;
+    /* top: 10px; */
     /* text-align: center; */
 }
 .credintials-error{
@@ -289,6 +293,7 @@ html{
     width: auto;
     padding: 10px 0;
     color: #fff;
+    margin-top: 8px;
 }
 .success-msg{
     padding: 10px 20px;

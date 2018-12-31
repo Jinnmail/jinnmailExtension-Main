@@ -1,27 +1,50 @@
 console.log('background js');
-
+let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
+// let url = 'http://localhost:9001/api/v1/'
 let generateMaskHandler = (info, tab) => {
-    let domain = getDomain(info.pageUrl);
-    let token = randomString(6);
-    let email_address = domain + '.' + token + '@jinnmail.com'
-    var js = "if (document.activeElement != undefined) document.activeElement.value = '" + email_address + "';document.activeElement.dispatchEvent(new Event('input'))";
-    chrome.tabs.executeScript(null, {
-        allFrames: true,
-        code: js
-    });
+    // let domain = getDomain(info.pageUrl);
+    // let token = randomString(6);
+    // let email_address = domain + '.' + token + '@jinnmail.com'
+    registerAlias(info.pageUrl).then((data) => {
+        let email_address = data;
+        var js = "if (document.activeElement != undefined) document.activeElement.value = '" + email_address + "';document.activeElement.dispatchEvent(new Event('input'))";
+        chrome.tabs.executeScript(null, {
+            allFrames: true,
+            code: js
+        });
+    })
 }
 
 //Listener from content script
 
 chrome.runtime.onMessage.addListener((response, sender, sendResponse) => {
-    let domain = getDomain(sender.url);
-    let token = randomString(6);
-    let email_address = domain + '.' + token + '@jinnmail.com'
-    let js = "if (document.activeElement != undefined) if(document.getElementsByClassName('jnmbtn-inpt').length){document.getElementsByClassName('jnmbtn-inpt')[0].value= '" + email_address + "';document.getElementsByClassName('jnmbtn-inpt')[0].dispatchEvent(new Event('input'))}";
-    chrome.tabs.executeScript(null, {
-        allFrames: true,
-        code: js
-    });
+    // let domain = getDomain(sender.url);
+    // let token = randomString(6);
+    // let email_address = domain + '.' + token + '@jinnmail.com'
+    
+    if (response.buttonIcon == 'cust') {
+        console.log('response')
+        registerAlias(response.url).then((data) => {
+            let email_address = data;
+            console.log(email_address)
+            let js = "if (document.activeElement != undefined) if(document.getElementsByClassName('jnmbtn-inpt').length){document.getElementsByClassName('jnmbtn-inpt')[0].value= '" + email_address + "';document.getElementsByClassName('jnmbtn-inpt')[0].dispatchEvent(new Event('input'))}";
+            chrome.tabs.executeScript(null, {
+                allFrames: true,
+                code: js
+            });
+        })
+    } else {
+        registerAlias(sender.url).then((data) => {
+            let email_address = data;
+            console.log(email_address)
+            let js = "if (document.activeElement != undefined) if(document.getElementsByClassName('jnmbtn-inpt').length){document.getElementsByClassName('jnmbtn-inpt')[0].value= '" + email_address + "';document.getElementsByClassName('jnmbtn-inpt')[0].dispatchEvent(new Event('input'))}";
+            chrome.tabs.executeScript(null, {
+                allFrames: true,
+                code: js
+            });
+        })
+    }
+
 });
 
 //End
@@ -81,4 +104,52 @@ let getDomain = (url) => {
 
     return domain.split('.')[0];
 }
+//end
+
+//registration of alias
+
+let registerAlias = (siteurl) => {
+    return new Promise((resolve, reject) => {
+        stoken().then((token) => {
+            let data = { url: siteurl };
+            let json = JSON.stringify(data);
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", url + 'alias', true);
+            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            xhr.setRequestHeader('Authorization', token)
+            xhr.onload = function () {
+                let alias = JSON.parse(xhr.responseText);
+                if (xhr.readyState == 4 && xhr.status == "200") {
+                    console.log(alias);
+                    resolve(alias.data.alias)
+                } else {
+                    console.error(alias);
+                    registerAlias(siteurl);
+                }
+            }
+            xhr.send(json);
+        })
+    }).catch((err) => {
+        resolve('')
+    })
+
+}
+
+
+//end
+
+//get token 
+let stoken = () => {
+    return new Promise((resolve, reject) => {
+        chrome.storage.sync.get(['sessionToken'], (token) => {
+            if (token)
+                resolve(token.sessionToken);
+            else
+                reject('no token');
+        })
+    })
+
+
+}
+
 //end
