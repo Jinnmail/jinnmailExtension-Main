@@ -18,7 +18,13 @@
         "scripts": [
             "scripts/background.js"
         ]
-    },
+    }, 
+    "externally_connectable": {
+        "matches": [
+            "https://jinnmaildash.herokuapp.com/"
+        ],
+        "accepts_tls_channel_id": false
+      },
     "content_scripts": [
         {
             "all_frames": true,

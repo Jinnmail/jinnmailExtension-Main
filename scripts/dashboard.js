@@ -7,6 +7,10 @@ $('document').ready(() => {
         })
     });
 
+    chrome.storage.sync.get(['email'], result => {
+        $('#userDetails').text(result.email)
+    })
+
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
@@ -21,10 +25,10 @@ $('document').ready(() => {
                     request.setRequestHeader("Authorization", token);
                 },
                 success: (success) => {
-                    console.log(success);
+                    // console.log(success);
                     for (let index = 0; index < success.data.length; index++) {
                         let status = success.data[index].status ? 'on' : 'off';
-                        let data = '<tr>' +
+                        let data = '<tr class="main-table-content">' +
                             '<td class="email-cell text-left">' +
                             '<span class="email-address">' + success.data[index].alias + '</span>' +
                             '<div class="greyed-out" style="font-size: 0.9em;">' + new Date(success.data[index].created).getDate() + ' ' + monthNames[new Date(success.data[index].created).getMonth()] + '</div>' +
@@ -41,17 +45,23 @@ $('document').ready(() => {
                             '</tr>';
                         $('#append-mails').append(data);
                     }
-                    $('#remaining-mails').text(50 - success.data.length);
+                    // $('#userDetails').text(((success.data.length==0)?"No Data":success.data[0].email)); 
+                    $('#remaining-mails').text(success.data.length);
 
                 },
                 error: (err) => {
                     // alert(err.responseJSON.error)
-                    console.log(err)
+                    // console.log(err)
                 },
                 contentType: 'application/json'
             });
+
+            // let result = $('#userData').attr('value');
+            // $('#userDetails').text(`${result}`); 
+
+
         }).catch((err) => {
-            console.log(err);
+            // console.log(err);
         })
 
     }
@@ -73,7 +83,7 @@ $('document').ready(() => {
 
     $(document).delegate(".onoff", "click", function (e) {
         e.stopImmediatePropagation();
-        console.log(e, e.currentTarget.id, "hi")
+        // console.log(e, e.currentTarget.id, "hi")
         let currentSitu = e.currentTarget.classList.contains('bootstrap-switch-on') ? true : false;
         if (currentSitu) {
             e.currentTarget.classList.remove('bootstrap-switch-on');
@@ -90,26 +100,26 @@ $('document').ready(() => {
     //remove Alias
 
     $(document).delegate("#remAlias", "click", function (e) {
-        console.log(e, "remove")
+        // console.log(e, "remove")
         e.currentTarget.parentElement.parentElement.parentElement.nextElementSibling.classList.add('__visible');
     });
 
     $(document).delegate(".yes_cnfrm", "click", function (e) {
-        console.log(e, "remove yes")
+        // console.log(e, "remove yes")
         let id = e.currentTarget.id.split('_')[1];
-        console.log(id)
+        // console.log(id)
         let p = removeAlias(id)
     });
 
     $(document).delegate(".no_cnfrm", "click", function (e) {
-        console.log(e, "remove no")
+        // console.log(e, "remove no")
         e.currentTarget.parentElement.parentElement.classList.remove('__visible')
 
     });
 
 
     $(document).delegate(".copy-clip", "click", function (e) {
-        console.log(e, "remove no")
+        // console.log(e, "remove no")
         let copy_email=e.currentTarget.parentElement.parentElement.firstElementChild.firstElementChild.innerText;
         copyToClipboard(copy_email)
 
@@ -120,7 +130,7 @@ $('document').ready(() => {
             stoken().then((token) => {
                 let sendObj = { "status": val, aliasId: id }
                 sendObj = JSON.stringify(sendObj);
-                console.log(sendObj)
+                // console.log(sendObj)
                 $.ajax({
                     type: "PUT",
                     url: url + 'alias/status',
@@ -129,11 +139,11 @@ $('document').ready(() => {
                     },
                     data: sendObj,
                     success: (success) => {
-                        console.log(success);
+                        // console.log(success);
                     },
                     error: (err) => {
                         // alert(err.responseJSON.error)
-                        console.log(err)
+                        // console.log(err)
                     },
                     contentType: 'application/json'
                 })
@@ -155,13 +165,13 @@ $('document').ready(() => {
                     },
 
                     success: (success) => {
-                        console.log(success);
+                        // console.log(success);
                         $('#append-mails').empty();
                         init();
                     },
                     error: (err) => {
                         // alert(err.responseJSON.error)
-                        console.log(err)
+                        // console.log(err)
                     },
                     contentType: 'application/json'
                 })
@@ -170,60 +180,85 @@ $('document').ready(() => {
         })
     }
 
+    let isPassword = password => {
+        let regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+        return regex.test(password);
+    }
+
     $('#changepwdsubmit').click((e) => {
         let oldPassword = $('#changepwdold').val();
         let newPassword = $('#changepwdnew').val();
-        console.log(oldPassword, newPassword);
-        //
-        stoken().then((token) => {
-            let sendObj = { oldPassword: oldPassword, newPassword: newPassword }
-            sendObj = JSON.stringify(sendObj);
-            console.log(sendObj)
-            $.ajax({
-                type: "POST",
-                url: url + 'user/reset/password',
-                beforeSend: function (request) {
-                    request.setRequestHeader("Authorization", token);
-                },
-                data: sendObj,
-                success: (success) => {
-                    console.log(success);
-                    $(".success-message").show();
-                },
-                error: (err) => {
-                    // alert(err.responseJSON.error)
-                    console.log(err)
-                },
-                contentType: 'application/json'
+        let cnfPassword = $('#Confirmpwd').val();
+        let isValidPassword = isPassword(newPassword)
+        // console.log(oldPassword, newPassword, cnfPassword);
+        if(!isValidPassword){
+            $('.pwd-nt-matched').text("Password format mis-matched");
+            $('.pwd-nt-matched').show();
+        }
+        else if (cnfPassword != newPassword) {
+            $('.pwd-nt-matched').text("Password Not Matched");
+            $('.pwd-nt-matched').show();
+        } else if (cnfPassword == '' || newPassword == '') {
+            $('.pwd-nt-matched').text("Password is mandatory");
+            $('.pwd-nt-matched').show();
+        } else {
+            $('.pwd-nt-matched').hide();
+            stoken().then((token) => {
+                let sendObj = { oldPassword: oldPassword, newPassword: newPassword }
+                sendObj = JSON.stringify(sendObj);
+                // console.log(sendObj)
+                $.ajax({
+                    type: "POST",
+                    url: url + 'user/reset/password',
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Authorization", token);
+                    },
+                    data: sendObj,
+                    success: (success) => {
+                        // console.log(success);
+                        $(".success-message").show();
+                    },
+                    error: (err) => {
+                        // alert(err.responseJSON.error)
+                        // console.log(err);
+                        // $('.pwd-nt-matched').text("Old Password not matched");
+                        $('.error-message').show();
+                    },
+                    contentType: 'application/json'
+                })
             })
-        })
+        }
     })
 
     init();
 
     //script to show the settings page 
     $("#setIcon").click(function () {
-        $(".dashboard-container, .dashboard-btn, .top-right-buttons, .dashboard-msgs-icon").hide();
+        $(".dashboard-container, .dashboard-btn, .top-right-buttons, .dashboard-msgs-icon, #search-input").hide();
         $(".settings-wrapper, .settings-back-btn").show();
         $(".dashboard-welcome-title small").text("Settings");
+        $(".top-buttons.top-left-buttons").show();
+        $("#userDetails").css({left: 150, position:'absolute'});
     });
 
-    $(".settings-back-btn").click(function () {
-        $(".dashboard-container, .dashboard-btn, .top-right-buttons, .dashboard-msgs-icon").show();
+    $("#settings-back-btn").click(function () {
+        $(".dashboard-container, .dashboard-btn, .top-right-buttons, .dashboard-msgs-icon, #search-input").show();
         $(".settings-wrapper, .settings-back-btn").hide();
         $(".dashboard-welcome-title small").text("Manage your JinnMails");
         $(".reset-password-wrapper").hide();
+        $(".top-buttons.top-left-buttons").hide();
+        $("#userDetails").css({left: 1, position:'absolute'});
     })
     $("#reset-password").click(function () {
         $(".settings-wrapper").hide();
         $(".reset-password-wrapper").show();
     })
 
-
     //open webpage
     $('.dashboard-btn').click((e) => {
-        console.log('here ');
+        // console.log('here ');
         chrome.tabs.create({ url: 'https://jinnmaildash.herokuapp.com/index.html' })
+        // chrome.tabs.create({ url: 'http://localhost/jinnmail-dash/index.html' })
     })
 
     $('.mail-env-btn').click((e) => {
@@ -232,7 +267,7 @@ $('document').ready(() => {
     //end
     
     function copyToClipboard(email) {
-   console.log('here', email)
+        // console.log('here', email)
       
         var aux = document.createElement("input");
       
@@ -251,8 +286,19 @@ $('document').ready(() => {
         // Remove it from the body
         document.body.removeChild(aux);
     }
-      
-
+     
+    //Search Filter
+    $('#search-input').on("keyup", (e) => {
+        var value = e.target.value.toLowerCase();
+        $('#append-mails').find('.main-table-content').each(function () {
+            var str1 = $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)[0].innerHTML;
+            var str2 = value;
+            // console.log($(this).find('.email-address').text(), value);
+            if (str1.indexOf(str2) != -1) {
+                // console.log("Here..."+str2);
+            }
+        })
+    })
 
     
 

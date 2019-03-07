@@ -1,40 +1,121 @@
-console.log('content script jinnmail loaded');
-
+// console.log('content script jinnmail loaded');
 $(document).ready(() => {
 
     let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
     // let url = 'http://localhost:9001/api/v1/'
+
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
+    let count = 0, mailCount=0;
     let buttonIcon;
     let forms = document.getElementsByTagName('form');
-    setTimeout(() => {
-        for (let i = 0; i < forms.length; i++) {
-            let form = forms[i];
-            let inputs = form.querySelectorAll("input[type=email]");
-            for (let j = 0; j < inputs.length; j++) {
-                let input = inputs[j];
-                $(input).addClass("jnmbtn-inpt");
-                let divIcon = document.createElement("div");
-                divIcon.className = "jinmail-icon-div";
-                buttonIcon = document.createElement('button');
-                buttonIcon.className = "jinmail-icon-button";
-                buttonIcon.id = "jnnmbtn";
-                divIcon.appendChild(buttonIcon);
-                input.appendChild(divIcon);
-                input.parentNode.insertBefore(divIcon, input.nextSibling);
-                input.parentNode.style.position = "relative";
-            }
-        }
-    }, 1000);
+    let body = document.getElementsByTagName('body')[0];
+    
+    chrome.storage.local.remove(['alias'],() => {
+        console.log("Removed alias");
+    })
 
+    $("input").keypress(function(e){
+        // console.log("e: "+ JSON.stringify(e))
+        if(e.keyCode === 13){
+            e.preventDefault();
+        }
+    });
+
+    $(body).on('click', () => {
+        // console.log("Click Event")
+        start();
+    });
+
+    function start(){
+        // console.log(forms)
+        setTimeout(() => {
+            // if(forms.length){
+            //     for (let i = 0; i < forms.length; i++) {
+            //         let form = forms[i];
+            //         dispButton(form)
+            //     }
+            // }
+            // else{
+                dispButton(body)      
+            // }
+
+            function dispButton(elem){
+                elem = (elem == undefined)?document:elem;
+                let inputs = elem.querySelectorAll("input[type=email], input[type=text][placeholder*=email i], input[type=text][placeholder*=e-mail i], input[type=text][name*=email i], input[type=text][id*=email i], input[type=text][autocomplete*=email i]");
+                    for (let j = 0; j < inputs.length; j++) {
+                        let input = inputs[j];
+                        if(!$(input).hasClass("jnmbtn-inpt") ){
+                            $(input).addClass("jnmbtn-inpt");  
+                            let divIcon = document.createElement("div");
+                            divIcon.className = "jinmail-icon-div";
+
+                            divIcon.style.height = ((input.offsetHeight == 0)? input.style.height : input.offsetHeight + "px");
+                            divIcon.style.width = ((input.offsetWidth == 0)? input.style.width : input.offsetWidth + "px");
+                            // divIcon.style.top = ((input.offsetTop == 0)?input.offsetTop:Math.abs(input.parentElement.offsetTop - input.offsetTop)) + "px";
+                            // divIcon.style.left = ((input.offsetLeft == 0)?input.offsetLeft:Math.abs(input.parentElement.offsetLeft - input.offsetLeft)) + "px";
+                            
+                            let pos = $(input).position();
+                            divIcon.style.top = (pos.top + parseInt($(input).css('marginTop'))) + "px";
+                            divIcon.style.left = pos.left + "px";
+
+                            // divIcon.style.top = "0px";
+                            // divIcon.style.left = "0px";
+                            
+                            if(input.type === "hidden" || input.style.display === "none"){
+                                divIcon.style.display = "none";
+                            }
+                            buttonIcon = document.createElement('button');
+                            buttonIcon.className = "jinmail-icon-button";
+                            // buttonIcon.id = `jnnmbtn`;
+
+                            buttonIcon.style.height = ((parseInt(divIcon.style.height)-5)<28.2?(parseInt(divIcon.style.height)-5):28.2)+"px";
+	                        buttonIcon.style.width = buttonIcon.style.height;
+                            $(buttonIcon).attr("tabindex","-1");
+                            $(input).removeAttr('onFocus');
+
+                            buttonIcon.value = count;
+                            $(input).attr("temp", count++);
+                            divIcon.appendChild(buttonIcon);
+                            input.appendChild(divIcon);
+                            input.parentNode.insertBefore(divIcon, input.nextSibling);
+
+                            // console.log($(input).parent().css("display"));
+                            // console.log("top",$(input).css("padding-top"));
+                            // console.log("left",$(input).css("padding-left"));
+                            // console.log("right",$(input).css("padding-right"));
+                            // console.log("bottom",$(input).css("padding-bottopm"));
+                            
+                            if($(input).parent().css("display") === "none" || $(input).parent().css("display") === "inline" || $(input).parent().css("display") === "")
+                            {
+                                input.parentNode.style.display = "block";     
+                            }
+                        }
+                        else if($('.jinmail-icon-div').css("width") === "0px" || $('.jinmail-icon-div').css("height") === "0px")
+                        {
+                            $('.jinmail-icon-div').css("height", ((input.offsetHeight == 0)? input.style.height : input.offsetHeight + "px"));
+                            $('.jinmail-icon-div').css("width", ((input.offsetWidth == 0)? input.style.width : input.offsetWidth + "px"))
+                        }
+                        $(input).keypress(function(e){
+                            // console.log("e: "+ JSON.stringify(e))
+                            if(e.keyCode === 13){
+                                e.preventDefault();
+                            }
+                        });
+                    }
+            }
+        }, 1500);
+    }
+    start();
     let init = () => {
         $(".loader-container").hide();
         return new Promise((resolve, reject) => {
             chrome.storage.sync.get(['sessionToken'], (token) => {
-                if (token)
+                if (token){
+                    // console.log("token is:",token)
                     resolve(token.sessionToken);
+                }
                 else
                     reject('no token');
             })
@@ -46,80 +127,135 @@ $(document).ready(() => {
                     request.setRequestHeader("Authorization", token);
                 },
                 success: (success) => {
-                    console.log(success);
+                    // console.log("Data Retrieved: "+success.data.length);
+                    mailCount = 0;
                     for (let index = 0; index < success.data.length; index++) {
                         let status = success.data[index].status ? 'on' : 'off';
-                        let data = '<div class="d-lg-flex justify-content-between px-3">' +
-                            '<div class="mb-2">' +
+                        mailCount += success.data[index].mailCount;
+                        let data ='<div id="row-content" class="d-lg-flex justify-content-between px-3">' +
+                            '<div class="mb-2 cols-1">' +
                             '<span>' +
                             ' <span>' + success.data[index].alias + '</span>' +
                             ' </span>' +
                             '<div class="heading">Generated Jinn Mail</div>' +
                             ' </div>' +
-                            '<div class="mb-2">' +
-                            '<span>No description</span>' +
+                            '<div class="mb-2 cols-2">' +
+                            '<span data-toggle="tooltip" data-placement="top" title="'+success.data[index].refferedUrl+'">'+success.data[index].alias.substring(0, (success.data[index].alias.indexOf('.') < success.data[index].alias.indexOf('@'))?success.data[index].alias.indexOf('.'):success.data[index].alias.indexOf('@'))+'</span>' +
                             '<div class="heading">Description</div>' +
                             '</div>' +
-                            '<div class="mb-2">' +
-                            '<div>' + new Date(success.data[index].created).getDate() + ' ' + monthNames[new Date(success.data[index].created).getMonth()] + '</div>'
-                        '<div class="heading">Created At</div>' +
+                            '<div class="mb-2 cols-3">' +
+                            '<div>' + new Date(success.data[index].created).getDate() + ' ' + monthNames[new Date(success.data[index].created).getMonth()] + '</div>'+
+                            '<div class="heading">Created At</div>' +
                             '</div>' +
-                            '<div class="mb-2">' +
-                            '<div>0</div>' +
+
+                            '<div class="mb-2 cols-4">' +
+                            '<div>'+((success.data[index].mailCount)?(success.data[index].mailCount):0)+'</div>' +
                             '<div class="heading">Forwarded</div>' +
                             '</div>' +
-                            ' <div class="mb-2">' +
+                            ' <div class="mb-2 cols-5">' +
                             '<div>0</div>' +
                             '<div class="heading">Blocked</div>' +
-                            ' </div></div>';
+                            ' </div>'+
 
+                            ' <div class="mb-2 cols-6">' +
+                            '<div>2 January 2019</div>' +
+                            '<div class="heading">Last Used date</div>' +
+                            ' </div>'+
+                                                     
+                            '<div class="mb-2 cols-7">' +
+                            '<div class="td-actions text-center">' +
+                            '<button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm btn-neutral  copy-clip" ><i class="fa fa-copy"></i></button>'+
+                            '<div  class="onoff bootstrap-switch wrapper bootstrap-switch-' + status + '" id=' + success.data[index].aliasId + ' style="width: 100px;">' +
+                            '<div  class="bootstrap-switch-container" style="width: 150px; margin-left: 0px;"><span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 50px;">ON</span><span class="bootstrap-switch-label" style="width: 50px;"> </span><span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 50px;">OFF</span></div>' +
+                            '</div>' +
+                            '<button type="button" rel="tooltip" class="remAlias btn btn-icon btn-sm btn-neutral"><i id="remAlias" class="fa fa-times ui-1_simple-remove"></i></button>' +
+                            '</div>' +
+                            '<div class="confirmation">' +
+                            '<div colspan="2"><span>Are you sure?</span><button id="yes_' + success.data[index].aliasId + '" class="yes_cnfrm btn btn-danger btn-sm">Yes</button><button class="no_cnfrm btn btn-sm">No</button></div>' +
+                            '</div>'
+                            '</div>' +
+                            '</div>';
+                        
                         $('#append-mails-web').append(data);
                     }
+                    $("p.title")[2].innerHTML = mailCount;
+                    $('#userDetails').text(((success.data.length==0)?"No Data":success.data[0].email))
                     $('#no-of-jinn').text(success.data.length);
 
                 },
                 error: (err) => {
                     // alert(err.responseJSON.error)
-                    console.log(err)
+                    // console.log(err)
                 },
                 contentType: 'application/json'
             });
         }).catch((err) => {
-            console.log(err);
+            // console.log(err);
         })
 
     }
-
-    init();
+    
+    if(window.location.href === 'https://jinnmaildash.herokuapp.com/index.html')
+    // if(window.location.href === 'http://localhost/jinnmail-dash/index.html')
+    {
+        init();
+    }        
 
     $("#generate-jinnmail-web").click((e) => {
-        console.log('here')
-        chrome.runtime.sendMessage({ url: location.hostname, res: 'ok', buttonIcon: buttonIcon }, (res) => {
+        // console.log('here', $('#domain-alias').val());
+
+        setTimeout( () => {
+            $('#domain-alias').focus();
+        },1000)
+    })
+
+    $("#custom-jinnmail-web").click((e) => {
+        // console.log('here')
+        $("#custom-alias").focus();
+        let randomStr = randomString(6);
+        $("#custom-rand").text(randomStr)
+
+        setTimeout( () => {
+            $('#custom-alias').focus();
+        }, 1000)
+    });
+
+    $("#generate-alias-domain-submit").click((e) => {
+        // console.log('here at submit');
+        var str = "http://" + $('#domain-alias').val() + ".com"
+        chrome.runtime.sendMessage({ url: str, res: 'ok', buttonIcon: buttonIcon }, (res) => {
         });
         setTimeout(() => {
+            $("#domainModal").removeClass('show');
             $('#append-mails-web').empty();
+            $('#domain-alias').val("");
+            $(".modal-header").find('.close').click();
             init();
         }, 2000)
     })
 
-    $("#custom-jinnmail-web").click((e) => {
-        console.log('here')
-        let randomStr = randomString(6);
-        // console.log(x$("#custom-rand"))
-        $("#custom-rand").text(randomStr)
-    });
-
     $("#generate-custom-jinnmail-submit").click((e) => {
-        console.log('here at submit');
+        // console.log('here at submit');
         let randStr = $("#custom-rand").text();
         let alias = $("#custom-alias").val();
-        console.log(alias, randStr)
-        alias = 'http://'+alias + '.com'
-        chrome.runtime.sendMessage({ url: alias, res: 'ok', buttonIcon: 'cust' }, (res) => {
+        let domainAlias = $('#custom-domain-alias').val();
+        console.log(alias, domainAlias, randStr)
+        //alias = 'http://'+alias +'.com'
+        if(domainAlias)
+        {
+            alias = `http://${alias}.${domainAlias}.com`
+        }else{
+            alias = `http://${alias}.com`
+        }
+        console.log(alias);
+        chrome.runtime.sendMessage({ url: alias, source: "cust", res: 'ok', buttonIcon: 'cust' }, (res) => {
         });
         setTimeout(() => {
             $("#createModal").removeClass('show');
             $('#append-mails-web').empty();
+            $('#custom-alias').val("");
+            $('#custom-domain-alias').val("");
+            $(".modal-header").find('.close').click();
             init();
         }, 2000)
     })
@@ -148,7 +284,7 @@ $(document).ready(() => {
                 xhr.onload = function () {
                     let alias = JSON.parse(xhr.responseText);
                     if (xhr.readyState == 4 && xhr.status == "200") {
-                        console.log(alias);
+                        // console.log(alias);
                         resolve(alias.data.alias)
                     } else {
                         console.error(alias);
@@ -178,10 +314,225 @@ $(document).ready(() => {
 
     }
 
-    $(document).on('click', '#jnnmbtn', (e) => {
-        console.log(e)
+    $(document).on('click', '.jinmail-icon-button', (e) => {
+        // console.log(e)
+        // console.log(e.target.value)
         e.preventDefault();
-        chrome.runtime.sendMessage({ url: location.hostname, res: 'ok', buttonIcon: buttonIcon }, (res) => {
+        chrome.runtime.sendMessage({ url: location.hostname, value: e.target.value, res: 'ok', buttonIcon: buttonIcon }, (res) => {
         });
     });
+
+    $(document).delegate(".onoff", "click", function (e) {
+        e.stopImmediatePropagation();
+        // console.log(e, e.currentTarget.id, "hi")
+        let currentSitu = e.currentTarget.classList.contains('bootstrap-switch-on') ? true : false;
+        if (currentSitu) {
+            e.currentTarget.classList.remove('bootstrap-switch-on');
+            e.currentTarget.classList.add('bootstrap-switch-off');
+            let p = changeStatus(!currentSitu, e.currentTarget.id)
+        } else {
+            e.currentTarget.classList.remove('bootstrap-switch-off');
+            e.currentTarget.classList.add('bootstrap-switch-on');
+            let p = changeStatus(!currentSitu, e.currentTarget.id)
+        }
+    });
+
+        //remove Alias
+
+        $(document).delegate("#remAlias", "click", function (e) {
+            // console.log(e, "remove")
+            e.currentTarget.parentElement.parentElement.nextSibling.classList.add('__visible');
+        });
+    
+        $(document).delegate(".yes_cnfrm", "click", function (e) {
+            // console.log(e, "remove yes")
+            let id = e.currentTarget.id.split('_')[1];
+            // console.log(id)
+            let p = removeAlias(id)
+        });
+    
+        $(document).delegate(".no_cnfrm", "click", function (e) {
+            // console.log(e, "remove no")
+            e.currentTarget.parentElement.parentElement.classList.remove('__visible')
+    
+        });
+    
+        let copyToClipboard = (email) => {
+            // console.log('here', email)
+        
+            var aux = document.createElement("input");
+        
+            
+            aux.setAttribute("value", email);
+        
+            // Append it to the body
+            document.body.appendChild(aux);
+        
+            // Highlight its content
+            aux.select();
+        
+            // Copy the highlighted text
+            document.execCommand("copy");
+        
+            // Remove it from the body
+            document.body.removeChild(aux);
+        }
+
+        $(document).delegate(".copy-clip", "click", function (e) {
+            // console.log(e, "remove no")
+            let email=e.currentTarget.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerText;
+            copyToClipboard(email)
+    
+        });
+
+
+    let changeStatus = (val, id) => {
+        return new Promise((resolve, reject) => {
+            stoken().then((token) => {
+                let sendObj = { "status": val, aliasId: id }
+                sendObj = JSON.stringify(sendObj);
+                // console.log(sendObj)
+                $.ajax({
+                    type: "PUT",
+                    url: url + 'alias/status',
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Authorization", token);
+                    },
+                    data: sendObj,
+                    success: (success) => {
+                        // console.log(success);
+                    },
+                    error: (err) => {
+                        // alert(err.responseJSON.error)
+                        // console.log(err)
+                    },
+                    contentType: 'application/json'
+                })
+            })
+
+        })
+    }
+
+    let removeAlias = (id) => {
+        return new Promise((resolve, reject) => {
+            stoken().then((token) => {
+                $.ajax({
+                    type: "DELETE",
+                    url: url + 'alias/' + id,
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Authorization", token);
+                    },
+
+                    success: (success) => {
+                        // console.log(success);
+                        $('#append-mails-web').empty();
+                        init();
+                    },
+                    error: (err) => {
+                        // alert(err.responseJSON.error)
+                        // console.log(err)
+                    },
+                    contentType: 'application/json'
+                })
+            })
+        })
+    }
+
+    // $("#searchedInput").on("keyup", function () {
+    //     var value = $(this).val().toLowerCase();
+        // console.log("search value", value);
+    //     $(".burner-content").children().each(function (d,i) {
+    //         var str1 = $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)[0].innerHTML;
+    //         var str2 = value;
+            // console.log("found...", str1)
+    //         if (str1.indexOf(str2) != -1) {
+                // console.log("Here..."+str2);
+    //         }
+    //     });
+    // });
+
+    $("#searchedInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        // console.log("search value", value);
+        $(".burner-content").children().each(function (d,i) {
+            var str1 = $(this).children().toggle($(this).text().toLowerCase().indexOf(value) > -1)[0].innerHTML;
+        });
+    });
+
+    /* login web */
+
+    $('#btn-login').click(() => {
+        let password = $('#key').val();
+        let email = $('#email').val();
+        let isValidEmail = isEmail(email);
+        $(".email-web-error").hide();
+        $(".password-web-error").hide();
+        if (email == '' || password == '' || !isValidEmail || password.length < 8) {
+            $('input[name="email"],input[type="password"]').css("border", "1px solid red");
+            $('input[name="email"],input[type="password"]').css("box-shadow", "0 0 1px red");
+        }
+        else {
+            $('input[name="email"],input[type="password"]').css("border", "2px solid #C4CCD1");
+            $('input[name="email"],input[type="password"]').css("box-shadow", "0 0 3px rgba(140, 150, 157, .3)");
+            $(".credintials-error").hide();
+            // console.log(email, password);
+            let data = { email: email, password: password };
+            data = JSON.stringify(data);
+            $.ajax({
+                type: "POST",
+                url: url + 'user/session',
+                data: data,
+                success: (success) => {
+                    // console.log(success)
+                    $(".success-msg").show();
+                    // console.log(success.data.sessionToken)
+                    chrome.storage.sync.set({ sessionToken: success.data.sessionToken, isLogged: 1 }, function () {
+                        // console.log('Value is set to ');
+                        // window.location.href = '../pages/dashboard.html';
+                        window.location.href = 'https://jinnmaildash.herokuapp.com/index.html';
+                        // window.location.href = 'http://localhost/jinnmail-dash/index.html';
+                        
+                    });
+                },
+                error: (err) => {
+                    // alert(err.responseJSON.error)
+                    // console.log(err)
+                    $(".credintials-error").text(err.responseJSON.error)
+                    $(".credintials-error").show()
+                },
+                contentType: 'application/json'
+            });
+        }
+        if (password.length < 8) {
+            $('input[name="email"]').css("border", "2px solid #C4CCD1");
+            $('input[name="email"]').css("box-shadow", "0 0 3px rgba(140, 150, 157, .3)");
+            $(".password-web-error").show();
+            $(".credintials-error").hide();
+        }
+        else {
+            $(".password-web-error").hide();
+            $(".credintials-error").hide();
+            $('input[type="password"]').css("border", "2px solid #C4CCD1");
+            $('input[type="password"]').css("box-shadow", "0 0 3px rgba(140, 150, 157, .3)");
+        }
+        let userEmail = $("#email").val();
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (!regex.test(userEmail)) {
+            $(".email-web-error").show();
+            $(".credintials-error").hide();
+            $('input[type="emali"]').css("border", "2px solid red");
+            $('input[type="email"]').css("box-shadow", "0 0 3px red");
+        }
+        else {
+            $(".email-web-error").hide();
+            $(".credintials-error").hide();
+            $('input[type="email"]').css("border", "2px solid #C4CCD1");
+            $('input[type="email"]').css("box-shadow", "0 0 3px rgba(140, 150, 157, .3)");
+        }
+    });
+
+    let isEmail = (email) => {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
 });

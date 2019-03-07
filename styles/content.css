@@ -1,35 +1,34 @@
-  .jinmail-icon-div{
-    position: absolute !important;
-    top: auto !important;
-    bottom: 0 !important;
-    left: auto !important;
-    right: 0 !important;
-    width: auto !important;
-    height: 47px !important;
-    z-index: auto !important;
-    pointer-events: none !important;
-  }
-  
-  .jinmail-icon-button{
-    margin: 0 !important;
-    padding: 0 !important;
-    pointer-events: all !important;
-    position: absolute !important;
-    border: none !important;
-    border-radius: 6px !important;
-    cursor: pointer !important;
-    top: 50% !important;
-    right: 9.4px !important;
-    left: auto !important;
-    -webkit-transform: translateY(-50%) !important;
-    -moz-transform: translateY(-50%) !important;
-    transform: translateY(-50%) !important;
-    width: 28.2px !important;
-    height: 28.2px !important;
-    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADkElEQVRYw81XS0wTURQd40pduCQxxoWJhBAthW5dGuPGJQku3IjyaQVxYVwZoyuNBqMJRlcu3BiRvS5dYSRGsCC0hQK1QFs+QT6Fgu3xntcP0+nMtION4SUnfXnv3nNOZ+7ceaNpDsa5NtS5OnG9wYcPgunGm0gSnHONe4zRqjlqruKYqx1XROCj24cVTzfg6QJEuAhc4x5jGMsc5v6TeJMXlxq9GCR50y0RMhEuQS5WmZRccjgWPtmMI/IvHjV1IcV/ZSXm8mZhtc9ccpCLnBWJn27DcbcX/Xb/2C2o6wQu311U4Nxd5oqQk9y24ifacFTuYVZcL+gzIoN7Tz9jYfCCAudcM8bpOZQJ4aaGpYEGLx4bxevbgTuvgJlYDgtAJJZBOhkBUkEFzrnGvXwcc5hrNEENU/GzXlwUhzvGS1h7A+h9D8eDOcwtuX2iQa0icY9cFimUL2YFd+oa8OTdHnEmk7FFfjCHuWaFqbT0t8LlQ4tRXIJUcfkeDGHK369I1zc2EQhFEJw0B/cYw8Ec5pKjwVdqwtWBlqx6Mw5LBX/SG2ABne9J4u2b10h9rwHm7yvSdDqD3d0/tmCMGpLDXHKQS1+UqmGJJrU1cVcrDWNV393qO4CeZwlsB6SK/IeA6EPFmUrtYGlpFUvLFpA9xqjBHMklB7nIqe+a1HR344zmlv5tvPzKwPNNjAdDiPzow270peJMbm0jOhcXJCwQVzEczGEuOcilN1C4CqKtSScbMPb2rIF1lTw8GsaE/P5e26j4CWDsRC43a2C91ECX6qIDmnqrWRoIYmSMRAL5jc4n1H22GtxjzHAuh7nkMDNATWprjT5sGR8Vo4E8hv1BBCZnVaWz2NKZHGSunhDZY4w+x9IAIdqODGRNhDA2MY1ofBlzOXDONe4Z48saqOQWFCCXdXQ8jOlIDLNSdDM5cM417o2MVmggfwvsizBYIh4Wocj8ohLVg2thExNWBgpFKM9jq/ljWGxA/fNf5uJ6E4xRJsoZ6Fa9oFVjMzBtRDoDlYhbmTAzUNSIzFpxwUAgCP/4VMXiRhPMJUeJAX0rNnsZMfj2izVMhUOYjS4gGpMuF4s7RELlkoNcRgN7LyOT13G9vME6e5P49jOOobEVfN0nmEsOcpHT8nVsdiDx5I/a1UC5A4ndkayasD2S2R1KqyVe9lBa6bHcEZwcy51+mJTDvj5MDsSn2YH5OP0fn+d/Aa65pZnF2gIRAAAAAElFTkSuQmCC) center no-repeat !important;
-    background-size: contain !important;
-  }
+.jinmail-icon-div{
+  position: absolute !important;
+  /* bottom: 0 !important;
+  right: 0 !important; */
+  z-index: 2 !important;
+  pointer-events: none !important;
+  background: transparent;
+  /* margin-top: auto !important;
+  margin-left: 0 !important; */
+  /* margin-right: auto !important; */
+}
 
+.jinmail-icon-button{
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: all !important;
+  position: absolute !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  top: 50% !important;
+  right: 9.4px !important;
+  left: auto !important;
+  -webkit-transform: translateY(-50%) !important;
+  -moz-transform: translateY(-50%) !important;
+  transform: translateY(-50%) !important;
+  /* width: 28.2px !important;
+  height: 28.2px !important; */
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADkElEQVRYw81XS0wTURQd40pduCQxxoWJhBAthW5dGuPGJQku3IjyaQVxYVwZoyuNBqMJRlcu3BiRvS5dYSRGsCC0hQK1QFs+QT6Fgu3xntcP0+nMtION4SUnfXnv3nNOZ+7ceaNpDsa5NtS5OnG9wYcPgunGm0gSnHONe4zRqjlqruKYqx1XROCj24cVTzfg6QJEuAhc4x5jGMsc5v6TeJMXlxq9GCR50y0RMhEuQS5WmZRccjgWPtmMI/IvHjV1IcV/ZSXm8mZhtc9ccpCLnBWJn27DcbcX/Xb/2C2o6wQu311U4Nxd5oqQk9y24ifacFTuYVZcL+gzIoN7Tz9jYfCCAudcM8bpOZQJ4aaGpYEGLx4bxevbgTuvgJlYDgtAJJZBOhkBUkEFzrnGvXwcc5hrNEENU/GzXlwUhzvGS1h7A+h9D8eDOcwtuX2iQa0icY9cFimUL2YFd+oa8OTdHnEmk7FFfjCHuWaFqbT0t8LlQ4tRXIJUcfkeDGHK369I1zc2EQhFEJw0B/cYw8Ec5pKjwVdqwtWBlqx6Mw5LBX/SG2ABne9J4u2b10h9rwHm7yvSdDqD3d0/tmCMGpLDXHKQS1+UqmGJJrU1cVcrDWNV393qO4CeZwlsB6SK/IeA6EPFmUrtYGlpFUvLFpA9xqjBHMklB7nIqe+a1HR344zmlv5tvPzKwPNNjAdDiPzow270peJMbm0jOhcXJCwQVzEczGEuOcilN1C4CqKtSScbMPb2rIF1lTw8GsaE/P5e26j4CWDsRC43a2C91ECX6qIDmnqrWRoIYmSMRAL5jc4n1H22GtxjzHAuh7nkMDNATWprjT5sGR8Vo4E8hv1BBCZnVaWz2NKZHGSunhDZY4w+x9IAIdqODGRNhDA2MY1ofBlzOXDONe4Z48saqOQWFCCXdXQ8jOlIDLNSdDM5cM417o2MVmggfwvsizBYIh4Wocj8ohLVg2thExNWBgpFKM9jq/ljWGxA/fNf5uJ6E4xRJsoZ6Fa9oFVjMzBtRDoDlYhbmTAzUNSIzFpxwUAgCP/4VMXiRhPMJUeJAX0rNnsZMfj2izVMhUOYjS4gGpMuF4s7RELlkoNcRgN7LyOT13G9vME6e5P49jOOobEVfN0nmEsOcpHT8nVsdiDx5I/a1UC5A4ndkayasD2S2R1KqyVe9lBa6bHcEZwcy51+mJTDvj5MDsSn2YH5OP0fn+d/Aa65pZnF2gIRAAAAAElFTkSuQmCC) center no-repeat !important;
+  background-size: contain !important;
+}
   /* .loader-jinnmail {
     border: 16px solid #f3f3f3;
     border-radius: 50%;

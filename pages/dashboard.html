@@ -1,14 +1,15 @@
-<html class=" cssanimations">
+<html class="cssanimations">
 
-<head>
-    <meta charset="utf-8">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"> -->
-    <link href="../styles/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="styles/font-awesome.min.css" rel="stylesheet"> -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../styles/dashboard.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"> -->
+        <link href="../styles/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="styles/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="../styles/dashboard.css" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"> -->
+    </head>
+    
 
 <body>
     <!-- <script src="scripts/vendor/rollbar.config.js"></script>
@@ -21,42 +22,44 @@
                     <div class="card-block text-center">
                         <div>
                             <div class="top-buttons top-left-buttons">
-                                <a href="javascript:void(0);" class="btn btn-icon btn-round">
-                                    <i class="mail-env-btn fa fa-envelope dashboard-msgs-icon"></i>
+                                <a id="settings-back-btn" class="btn btn-icon btn-round">
+                                    <!-- <i class="mail-env-btn fa fa-envelope dashboard-msgs-icon"></i> -->
                                     <i class="fa fa-arrow-left settings-back-btn"></i>
                                 </a>
                             </div>
-                            <div class="top-buttons top-right-buttons"><a target="_blank" class="btn btn-icon btn-round btn-settings"
-                                    style="color: white;"><i id="setIcon" class="fa fa-cog"></i></a></div>
-                            <a href="javascript:void(0)" class="burnermail-logo" target="_blank"><img src="/icons/icon-3.png"></a>
+                            <div class="top-text top-middle-text">
+                                <p id="userDetails"></p>
+                            </div>
+                            <div class="top-buttons top-right-buttons">
+                                <a id="setIcon" target="_blank" class="btn btn-icon btn-round btn-primary btn-settings"
+                                    style="color: white;">
+                                    <i class="fa fa-cog"></i>
+                                </a>
+                            </div>
+                            <a  class="burnermail-logo" target="_blank"><img src="/icons/icon-3.png"></a>
                             <h2 class="dashboard-welcome-title"><small>Manage your JinnMails</small></h2>
                             <button class="btn btn-primary btn-round dashboard-btn" type="button" style="margin: 10px 1px 20px;">Dashboard</button>
+                            <div style="text-align: left;">
+                                <input type="text" id='search-input' placeholder="Type here to search..." style="margin: 5px; width: 100%; font-size: 14px;">
+                            </div>
                             <div class="dashboard-container">
-                                
                                 <div class="email-table row">
                                     <div class="table-responsive">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <td colspan="3" style="text-align: left;"><input type="text"
-                                                            placeholder="Type here to search..." style="width: 100%; font-size: 12px;"></td>
-                                                </tr>
-                                            </tbody>
-                                            <tbody id="append-mails">
-                                            </tbody>
+                                        <table class="table">                                            
+                                            <tbody id="append-mails"></tbody>
                                         </table>
                                     </div>
                                 </div>
                                 <div class="pull-left" style="width: 100%;">
-                                    <span class="footer-stat"><strong id="remaining-mails"></strong> remaining mails</span><span
+                                    <span class="footer-stat"><strong id="remaining-mails"></strong> Generated mails</span><span
                                         class="separator"> • </span>
-                                    <h6 style="display: inline;"><a href="javascript:void(0);" target="_blank" class="link footer-link upgrade-link">Upgrade</a></h6>
+                                    <h6 style="display: inline;"><a target="_blank" class="link footer-link upgrade-link">Upgrade</a></h6>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group settings-wrapper mt-3">
                             <a class="btn btn-primary btn-round mr-3" id="reset-password">Reset Password</a>
-                            <a href="javascript:void(0);" class="btn btn-primary btn-round" id="logoutIcon">LogOut </a>
+                            <a class="btn btn-primary btn-round" id="logoutIcon">LogOut </a>
                         </div>
                         <div class="reset-password-wrapper mt-3">
                             <div class="success-message alert-success py-3 mb-2">Password Changed Successfully.</div>
@@ -74,12 +77,13 @@
                                 <label class="d-block text-left">Confirm Password</label>
                                 <input type="password" id="Confirmpwd" class="form-control">
                             </div>
+                            <div class="pwd-nt-matched"></div>
                             <a id="changepwdsubmit" class="btn btn-primary w-100">Submit</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="rate-us">Like JinnMails? Leave us a <a href="javascript:void(0);" target="_blank">rating</a> 🌟</div>
+            <div class="rate-us">Like JinnMails? Leave us a <a target="_blank">rating</a> 🌟</div>
         </div>
     </div>
     <script src="../scripts/jQuery.js"></script>

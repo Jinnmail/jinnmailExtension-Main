@@ -1,4 +1,4 @@
-console.log('background js');
+// console.log('background js');
 let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
 // let url = 'http://localhost:9001/api/v1/'
 let generateMaskHandler = (info, tab) => {
@@ -17,16 +17,18 @@ let generateMaskHandler = (info, tab) => {
 
 //Listener from content script
 
-chrome.runtime.onMessage.addListener((response, sender, sendResponse) => {
+let aliasList = {};
+
+chrome.runtime.onMessage.addListener(async (response, sender, sendResponse) => {
     // let domain = getDomain(sender.url);
     // let token = randomString(6);
     // let email_address = domain + '.' + token + '@jinnmail.com'
     
     if (response.buttonIcon == 'cust') {
         console.log('response')
-        registerAlias(response.url).then((data) => {
+        registerAlias(response.url, response.source).then((data) => {
             let email_address = data;
-            console.log(email_address)
+            // console.log(email_address)
             let js = "if (document.activeElement != undefined) if(document.getElementsByClassName('jnmbtn-inpt').length){document.getElementsByClassName('jnmbtn-inpt')[0].value= '" + email_address + "';document.getElementsByClassName('jnmbtn-inpt')[0].dispatchEvent(new Event('input'))}";
             chrome.tabs.executeScript(null, {
                 allFrames: true,
@@ -34,15 +36,64 @@ chrome.runtime.onMessage.addListener((response, sender, sendResponse) => {
             });
         })
     } else {
-        registerAlias(sender.url).then((data) => {
-            let email_address = data;
-            console.log(email_address)
-            let js = "if (document.activeElement != undefined) if(document.getElementsByClassName('jnmbtn-inpt').length){document.getElementsByClassName('jnmbtn-inpt')[0].value= '" + email_address + "';document.getElementsByClassName('jnmbtn-inpt')[0].dispatchEvent(new Event('input'))}";
-            chrome.tabs.executeScript(null, {
-                allFrames: true,
-                code: js
-            });
-        })
+        // console.log("response", response)
+        chrome.storage.sync.get(['isLogged'], result => {
+            console.log(result);
+            if(result.isLogged)
+            {
+                console.log("Logged...")
+                chrome.storage.local.get(['alias'], (token) => {
+                    function registerNewAlias(){
+                        registerAlias(response.url).then((data) => {
+                            let email_address = data;
+                            // console.log(email_address)
+                            let js = `if (document.activeElement != undefined) if(document.getElementsByClassName('jnmbtn-inpt').length){document.querySelector('input[temp = "${response.value}"]').value='${email_address}';document.querySelector('input[temp = "${response.value}"]').dispatchEvent(new Event('input'))}`;
+                            // $("#succMsg").append(`${email_address}`);
+                            chrome.tabs.executeScript(null, {
+                                allFrames: true,
+                                code: js
+                            });                         
+                            chrome.storage.local.set({"alias":`${response.value} ${email_address}`}, () => {
+                                console.log("Alias generated...");
+                            })                 
+                            aliasList[response.value]=email_address;
+                        })
+                    }
+                    if(!token.alias)
+                    {
+                        registerNewAlias();
+                    }
+                    else
+                    {
+                        let temp = false;
+                        let index = token.alias.substring(0,token.alias.indexOf(" "));
+                        token = token.alias.substring((token.alias.indexOf(" ")+1),token.alias.length);
+                        // console.log("Index:"+index,"Token:"+token);
+                        for(x in aliasList)
+                        {
+                            if(x===response.value)
+                                temp = true;
+                        }
+                        if(temp)
+                        {
+                            let js = `if (document.activeElement != undefined) if(document.getElementsByClassName('jnmbtn-inpt').length){document.querySelector('input[temp = "${response.value}"]').value='${aliasList[response.value]}';document.querySelector('input[temp = "${response.value}"]').dispatchEvent(new Event('input'))}`;
+                            // $("#succMsg").append(`${email_address}`);
+                            chrome.tabs.executeScript(null, {
+                                allFrames: true,
+                                code: js
+                            });                       
+                        }               
+                        else{
+                            registerNewAlias();
+                        }
+                    }
+                })                
+            }
+            else
+            {
+                alert("Please login to Jinnmail to continue...")              
+            }
+        })  
     }
 
 });
@@ -108,23 +159,26 @@ let getDomain = (url) => {
 
 //registration of alias
 
-let registerAlias = (siteurl) => {
+let registerAlias = (siteurl, sourceType) => {
+    console.log(siteurl+" ================= "+sourceType)
     return new Promise((resolve, reject) => {
         stoken().then((token) => {
-            let data = { url: siteurl };
+            let data = { url: siteurl, source: sourceType };
             let json = JSON.stringify(data);
+            console.log("JSON DATA: "+json);    
             let xhr = new XMLHttpRequest();
             xhr.open("POST", url + 'alias', true);
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             xhr.setRequestHeader('Authorization', token)
             xhr.onload = function () {
                 let alias = JSON.parse(xhr.responseText);
+                console.log("ALias: " + alias)
                 if (xhr.readyState == 4 && xhr.status == "200") {
-                    console.log(alias);
+                    // console.log(alias);
                     resolve(alias.data.alias)
                 } else {
                     console.error(alias);
-                    registerAlias(siteurl);
+                    registerAlias(siteurl, sourceType);
                 }
             }
             xhr.send(json);

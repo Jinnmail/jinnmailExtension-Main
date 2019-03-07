@@ -237,7 +237,7 @@ html{
 #loginDialog label span{
     color: red;
 }
-.forgot-password{
+.forgot-password, .resend-code{
     color: #3A6BB3;
     display: block;
     text-align: right;
@@ -305,4 +305,79 @@ html{
     background:green;
     margin: 14px;
     margin-bottom: 0;
+}
+
+.weak {
+    font-size: 14px;
+    color: red;
+    /* position: relative; */
+    /* background: #fff; */
+    width: 95%;
+    padding: 2px;
+    padding-left: 0px;
+    display: none;
+    border-radius: 5px;
+    margin-top: 2px;
+    /* top: 10px; */
+    /* text-align: center; */
+}
+.stronger {
+    font-size: 14px;
+    color: #7CFC00		;
+    /* position: relative; */
+    /* background: #fff; */
+    width: 95%;
+    padding: 2px;
+    padding-left: 0px;
+    display: none;
+    border-radius: 5px;
+    margin-top: 2px;
+    /* top: 10px; */
+    /* text-align: center; */
+}
+.strongest {
+    font-size: 14px;
+    color: #006400;
+    /* position: relative; */
+    /* background: #fff; */
+    width: 95%;
+    padding: 2px;
+    padding-left: 0px;
+    display: none;
+    border-radius: 5px;
+    margin-top: 2px;
+    font-weight: 600
+    /* top: 10px; */
+    /* text-align: center; */
+}
+
+#oldtoNewAcc, #newLogin{
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: #3A6BB3;
+}
+
+#forgetPasswordSubmit{
+    display: none
+}
+#forgetPasswordTitle{
+    display: none
+}
+#reLogin {
+    font-size: 15px;
+    cursor: pointer;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: .2px;
+    background: transparent;
+    text-decoration: none;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #3A6BB3;
+    border: 0;
+    display: none;
+}
+#sep{
+    display: none
 }

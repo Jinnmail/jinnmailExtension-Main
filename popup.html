@@ -14,7 +14,8 @@
                 <div class="dialogHeaderInner"><span class="dialogHeaderTitle" id="loginDialogTitle">JinnMail</span></div>
             </div>
 
-            <div class="page-title">Login Here</div>
+            <div id="loginTitle" class="page-title">Login Here</div>
+            <div id="forgetPasswordTitle" class="page-title">Forget Password</div>
             <div class="success-msg">Login Success</div>
             <div class="credintials-error"></div>
             <div class="dialogContent dialogContentFixed">
@@ -30,25 +31,34 @@
                         </div>
                     </div>
                     <div class="email-error">Invalid Email</div>
-                    <div class="row small-margins">
-                        <div class="col-8">
-                            <label class="label" for="loginDialogPassword">Password<span>*</span></label>
+                    <div id="loginPassword">
+                        <div class="row small-margins">
+                            <div class="col-8">
+                                <label class="label" for="loginDialogPassword">Password<span>*</span></label>
 
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <input class="dialogInput inputCapsMatter unknown" minlength="8" id="loginDialogPassword"
+                                dialogfield="password" type="password" spellcheck="false" required>
                         </div>
                     </div>
-                    <div class="relative">
-                        <input class="dialogInput inputCapsMatter unknown" minlength="8" id="loginDialogPassword"
-                            dialogfield="password" type="password" spellcheck="false" required>
-                    </div>
                     <div class="password-error">Password length should be greater than 7 characters</div>
-                    <a href="#" class="forgot-password">Forgot Password ?</a>
-                    <div class="buttons centerButtons">
+                    <div id="result"></div>
+                    <a href="#" id="forgotPassword" class="forgot-password">Forgot Password ?</a>
+                    
+                    <div id="loginButton" class="buttons centerButtons">
                         <input type="submit" id="logInButton" value="Log In" class="nbtn rbtn">
+                    </div>
+                    <div id="forgetPasswordSubmit" class="buttons centerButtons">
+                        <input type="submit" id="forgetButton" value="Submit" class="nbtn rbtn">
                     </div>
                     <div class="content-pull-center gutter-bottom-xl">
                         <div>
                             <p class="hr">or</p>
                         </div>
+                        <button id="reLogin">Login</button>
+                        <a id="sep">|</a>
                         <button id="newToLastPass">Create an account</button>
                     </div>
                 </div>

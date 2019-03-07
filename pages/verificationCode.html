@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/popup.css" />
+</head>
+
+<body class="main-container">
+    <div id="content-wrapper">
+        <div class="dialog" role="dialog" aria-labelledby="loginDialogTitle" id="loginDialog" style="display: block;  z-index: 1;">
+            <!-- <button class="focusCycler"></button> -->
+            <div class="dialogHeader icon leftIcon">
+                <div class="dialogHeaderInner"><span class="dialogHeaderTitle" id="loginDialogTitle">JinnMail</span></div>
+            </div>
+            <div class="page-title">Verification Code</div>
+            <div id="succMsg" class="success-msg" style="display:block"></div>
+
+            <div class="credintials-error"></div>
+            <div class="dialogContent dialogContentFixed">
+                <div dialogsection="main" id="loginView" class="lp-grid container gutter-sm">
+                    <div class="small-margins">
+                        <label for="loginDialogEmail" class="label first">Code<span>*</span></label>
+                                           </div>
+                    <div class="dropdownContainer" style="margin: 0px;">
+                        <div class="relative">
+                            <input class="dialogInput typeaheadDropdown clickToggles" id="codeVerify" 
+                                type="text" spellcheck="false" required>
+                        </div>
+                    </div>
+                    <a href="#" id="resendCode" class="resend-code">Resend Verification Code</a>
+                    
+                  
+                    <div class="buttons centerButtons">
+                        <button id="verifyButton" class="nbtn rbtn">Verify</button>
+                    </div>
+                    <div class="content-pull-center gutter-bottom-xl">
+                        <div>
+                            <p class="hr">or</p>
+                        </div>
+                        <button id="newLogin">Login</button>
+                            <a id="sep" style="display:inline">|</a>
+                        <button id="oldtoNewAcc">Create an account</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <button class="focusCycler"></button> -->
+        </div>
+    </div>
+    <script src="../scripts/jQuery.js"></script>
+    <script src="../scripts/verify.js"></script>
+</body>
+
+</html>
