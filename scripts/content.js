@@ -16,12 +16,13 @@ $(document).ready(() => {
         console.log("Removed alias");
     })
 
-    $("input").keypress(function(e){
-        // console.log("e: "+ JSON.stringify(e))
-        if(e.keyCode === 13){
-            e.preventDefault();
-        }
-    });
+    // $("input").keypress(function(e){
+    //     // console.log("e: "+ JSON.stringify(e))
+    //     if(e.keyCode === 13){
+    //         e.preventDefault();
+    //         // console.log(e)
+    //     }
+    // });
 
     $(body).on('click', () => {
         // console.log("Click Event")
@@ -44,66 +45,68 @@ $(document).ready(() => {
             function dispButton(elem){
                 elem = (elem == undefined)?document:elem;
                 let inputs = elem.querySelectorAll("input[type=email], input[type=text][placeholder*=email i], input[type=text][placeholder*=e-mail i], input[type=text][name*=email i], input[type=text][id*=email i], input[type=text][autocomplete*=email i]");
-                    for (let j = 0; j < inputs.length; j++) {
-                        let input = inputs[j];
-                        if(!$(input).hasClass("jnmbtn-inpt") ){
-                            $(input).addClass("jnmbtn-inpt");  
-                            let divIcon = document.createElement("div");
-                            divIcon.className = "jinmail-icon-div";
+                for (let j = 0; j < inputs.length; j++) {
+                    let input = inputs[j];
+                    if(!$(input).hasClass("jnmbtn-inpt") ){
+                        $(input).addClass("jnmbtn-inpt");  
+                        let divIcon = document.createElement("div");
+                        divIcon.className = "jinnmail-icon-div";
+                        $(divIcon).attr("tabindex","-1");
 
-                            divIcon.style.height = ((input.offsetHeight == 0)? input.style.height : input.offsetHeight + "px");
-                            divIcon.style.width = ((input.offsetWidth == 0)? input.style.width : input.offsetWidth + "px");
-                            // divIcon.style.top = ((input.offsetTop == 0)?input.offsetTop:Math.abs(input.parentElement.offsetTop - input.offsetTop)) + "px";
-                            // divIcon.style.left = ((input.offsetLeft == 0)?input.offsetLeft:Math.abs(input.parentElement.offsetLeft - input.offsetLeft)) + "px";
-                            
-                            let pos = $(input).position();
-                            divIcon.style.top = (pos.top + parseInt($(input).css('marginTop'))) + "px";
-                            divIcon.style.left = pos.left + "px";
+                        divIcon.style.height = ((input.offsetHeight == 0)? input.style.height : input.offsetHeight + "px");
+                        divIcon.style.width = ((input.offsetWidth == 0)? input.style.width : input.offsetWidth + "px");
+                        // divIcon.style.top = ((input.offsetTop == 0)?input.offsetTop:Math.abs(input.parentElement.offsetTop - input.offsetTop)) + "px";
+                        // divIcon.style.left = ((input.offsetLeft == 0)?input.offsetLeft:Math.abs(input.parentElement.offsetLeft - input.offsetLeft)) + "px";
+                        
+                        let pos = $(input).position();
+                        divIcon.style.top = (pos.top + parseInt($(input).css('marginTop'))) + "px";
+                        divIcon.style.left = pos.left + "px";
 
-                            // divIcon.style.top = "0px";
-                            // divIcon.style.left = "0px";
-                            
-                            if(input.type === "hidden" || input.style.display === "none"){
-                                divIcon.style.display = "none";
-                            }
-                            buttonIcon = document.createElement('button');
-                            buttonIcon.className = "jinmail-icon-button";
-                            // buttonIcon.id = `jnnmbtn`;
-
-                            buttonIcon.style.height = ((parseInt(divIcon.style.height)-5)<28.2?(parseInt(divIcon.style.height)-5):28.2)+"px";
-	                        buttonIcon.style.width = buttonIcon.style.height;
-                            $(buttonIcon).attr("tabindex","-1");
-                            $(input).removeAttr('onFocus');
-
-                            buttonIcon.value = count;
-                            $(input).attr("temp", count++);
-                            divIcon.appendChild(buttonIcon);
-                            input.appendChild(divIcon);
-                            input.parentNode.insertBefore(divIcon, input.nextSibling);
-
-                            // console.log($(input).parent().css("display"));
-                            // console.log("top",$(input).css("padding-top"));
-                            // console.log("left",$(input).css("padding-left"));
-                            // console.log("right",$(input).css("padding-right"));
-                            // console.log("bottom",$(input).css("padding-bottopm"));
-                            
-                            if($(input).parent().css("display") === "none" || $(input).parent().css("display") === "inline" || $(input).parent().css("display") === "")
-                            {
-                                input.parentNode.style.display = "block";     
-                            }
+                        // divIcon.style.top = "0px";
+                        // divIcon.style.left = "0px";
+                        
+                        if(input.type === "hidden" || input.style.display === "none"){
+                            divIcon.style.display = "none";
                         }
-                        else if($('.jinmail-icon-div').css("width") === "0px" || $('.jinmail-icon-div').css("height") === "0px")
+                        buttonIcon = document.createElement('button');
+                        buttonIcon.className = "jinnmail-icon-button";
+                        // buttonIcon.id = `jnnmbtn`;
+
+                        buttonIcon.style.height = ((parseInt(divIcon.style.height)-5)<28.2?(parseInt(divIcon.style.height)-5):28.2)+"px";
+                        buttonIcon.style.width = buttonIcon.style.height;
+                        $(buttonIcon).attr("tabindex","-1");
+                        $(input).removeAttr('onFocus');
+
+                        buttonIcon.value = count;
+                        $(input).attr("temp", count++);
+                        divIcon.appendChild(buttonIcon);
+                        input.appendChild(divIcon);
+                        input.parentNode.insertBefore(divIcon, input.nextSibling);
+
+                        // console.log($(input).parent().css("display"));
+                        // console.log("top",$(input).css("padding-top"));
+                        // console.log("left",$(input).css("padding-left"));
+                        // console.log("right",$(input).css("padding-right"));
+                        // console.log("bottom",$(input).css("padding-bottopm"));
+                        
+                        if($(input).parent().css("display") === "none" || $(input).parent().css("display") === "inline" || $(input).parent().css("display") === "")
                         {
-                            $('.jinmail-icon-div').css("height", ((input.offsetHeight == 0)? input.style.height : input.offsetHeight + "px"));
-                            $('.jinmail-icon-div').css("width", ((input.offsetWidth == 0)? input.style.width : input.offsetWidth + "px"))
+                            input.parentNode.style.display = "block";     
                         }
-                        $(input).keypress(function(e){
-                            // console.log("e: "+ JSON.stringify(e))
-                            if(e.keyCode === 13){
-                                e.preventDefault();
-                            }
-                        });
+                        
                     }
+                    else if($('.jinnmail-icon-div').css("width") === "0px" || $('.jinnmail-icon-div').css("height") === "0px")
+                    {
+                        $('.jinnmail-icon-div').css("height", ((input.offsetHeight == 0)? input.style.height : input.offsetHeight + "px"));
+                        $('.jinnmail-icon-div').css("width", ((input.offsetWidth == 0)? input.style.width : input.offsetWidth + "px"))
+                    }
+                    $(input).keypress(function(e){
+                        // console.log("e: "+ JSON.stringify(e))
+                        if(e.keyCode === 13){
+                            e.preventDefault();
+                        }
+                    });
+                }
             }
         }, 1500);
     }
@@ -127,7 +130,7 @@ $(document).ready(() => {
                     request.setRequestHeader("Authorization", token);
                 },
                 success: (success) => {
-                    // console.log("Data Retrieved: "+success.data.length);
+                    console.log("Data Retrieved: "+JSON.stringify(success.data));
                     mailCount = 0;
                     for (let index = 0; index < success.data.length; index++) {
                         let status = success.data[index].status ? 'on' : 'off';
@@ -209,6 +212,12 @@ $(document).ready(() => {
         },1000)
     })
 
+    $("#custom-alias").on('keydown', () => {
+        $("#custom-alias").css({
+            "border": "1px solid rgba(0, 0, 0, .15)"
+        })
+    })
+
     $("#custom-jinnmail-web").click((e) => {
         // console.log('here')
         $("#custom-alias").focus();
@@ -243,24 +252,73 @@ $(document).ready(() => {
         //alias = 'http://'+alias +'.com'
         if(domainAlias)
         {
-            alias = `http://${alias}.${domainAlias}.com`
+            checkAlias(`${alias}.${domainAlias}@jinnmail.com`)
         }else{
-            alias = `http://${alias}.com`
+            checkAlias(`${alias}@jinnmail.com`)
         }
         console.log(alias);
-        chrome.runtime.sendMessage({ url: alias, source: "cust", res: 'ok', buttonIcon: 'cust' }, (res) => {
-        });
-        setTimeout(() => {
-            $("#createModal").removeClass('show');
-            $('#append-mails-web').empty();
-            $('#custom-alias').val("");
-            $('#custom-domain-alias').val("");
-            $(".modal-header").find('.close').click();
-            init();
-        }, 2000)
+        // chrome.runtime.sendMessage({ url: alias, source: "cust", res: 'ok', buttonIcon: 'cust' }, (res) => {
+        // });
+        // setTimeout(() => {
+        //     $("#createModal").removeClass('show');
+        //     $('#append-mails-web').empty();
+        //     $('#custom-alias').val("");
+        //     $('#custom-domain-alias').val("");
+        //     $(".modal-header").find('.close').click();
+        //     init();
+        // }, 2000)
     })
 
-
+    function checkAlias(link) {
+        chrome.storage.sync.get(['sessionToken'], (token) => {
+            if (token){
+                // console.log("token is:",token.sessionToken)
+                function matchAlias(alias) {
+                    // console.log(alias.alias+"---"+link)
+                    return alias.alias === link;
+                }
+                function AliasFound(){
+                    $("#custom-alias").css({
+                        "border":"2px solid red"
+                    })
+                    console.log(true)
+                }
+                function AliasNotFound(){
+                    console.log(false)
+                    link = link.substring(0, link.lastIndexOf('@'))
+                    alias = `http://${link}.com`
+                    chrome.runtime.sendMessage({ url: alias, source: "cust", res: 'ok', buttonIcon: 'cust' }, (res) => {
+                    });
+                    setTimeout(() => {
+                        $("#createModal").removeClass('show');
+                        $('#append-mails-web').empty();
+                        $('#custom-alias').val("");
+                        $('#custom-domain-alias').val("");
+                        $(".modal-header").find('.close').click();
+                        init();
+                    }, 2000)
+                };
+                $.ajax({
+                    type: "GET",
+                    url: url + 'alias/checkAlias',
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Authorization", token.sessionToken);
+                    },
+                    success: (success) => {
+                        console.log(JSON.stringify(success));
+                        (success.data.filter(matchAlias).length>0)?AliasFound():AliasNotFound();
+                    },
+                    error: (err) => {
+                        // alert(err.responseJSON.error)
+                        console.log(err)
+                    },
+                    contentType: 'application/json'
+                })
+            }
+            else
+                reject('no token');
+        })
+    }
 
     let randomString = (string_length) => {
         let chars = "0123456789abcdefghiklmnopqrstuvwxyz";
@@ -314,7 +372,7 @@ $(document).ready(() => {
 
     }
 
-    $(document).on('click', '.jinmail-icon-button', (e) => {
+    $(document).on('click', '.jinnmail-icon-button', (e) => {
         // console.log(e)
         // console.log(e.target.value)
         e.preventDefault();
@@ -453,7 +511,7 @@ $(document).ready(() => {
 
     $("#searchedInput").on("keyup", function () {
         var value = $(this).val().toLowerCase();
-        // console.log("search value", value);
+        console.log("search value", value);
         $(".burner-content").children().each(function (d,i) {
             var str1 = $(this).children().toggle($(this).text().toLowerCase().indexOf(value) > -1)[0].innerHTML;
         });

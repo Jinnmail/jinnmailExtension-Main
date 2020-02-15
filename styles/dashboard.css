@@ -10709,14 +10709,14 @@ select:-webkit-autofill:active {
   color: #FFFFFF !important;
 }
 
-.card .burnermail-logo {
+.card .gogo-logo {
   display: inline-block;
   width: 64px;
   margin: 15px auto 0;
   border-color: transparent !important;
 }
 
-.card .burnermail-logo:hover {
+.card .gogo-logo:hover {
   border-color: transparent !important;
 }
 
@@ -10738,7 +10738,7 @@ select:-webkit-autofill:active {
   max-width: 280px;
 }
 
-.login-page--custom .logo-container .burnermail-logo {
+.login-page--custom .logo-container .gogo-logo {
   border-color: transparent !important;
   margin: 0 0 40px;
   display: inline-block;

@@ -1,18 +1,23 @@
 {
-    "name": "jinnmail",
+    "name": "Jinnmail — Privacy for your email address",
     "version": "1.0",
-    "description": "An email address manager offering unlimited on-demand, unique, anonymous email aliases.",
+    "description": "Camouflage your Gmail. Fight spam, hackers, surveillance with secret temporary aliases while your address stays private & spam-free.",
     "author": "Ahex Technologies<https://ahex.co>",
     "permissions": [
-        "tabs",
+        "activeTab",
         "storage",
         "contextMenus",
         "http://*/*",
         "https://*/*"
     ],
     "icons": {
-        "16": "icons/icon-1.png",
-        "128": "icons/icon-3.png"
+    	"16": "icons/icon-straight-16.png",
+        "19": "icons/icon-straight-19.png",
+        "24": "icons/icon-straight-24.png",
+        "32": "icons/icon-straight-32.png",
+        "38": "icons/icon-straight-38.png",
+        "48": "icons/icon-straight-48.png",
+        "128": "icons/icon-straight-128.png"
     },
     "background": {
         "scripts": [
@@ -43,10 +48,15 @@
     ],
     "browser_action": {
         "default_icon": {
-            "19": "icons/icon-1.png",
-            "38": "icons/icon-2.png"
+            "16": "icons/icon-straight-16.png",
+            "19": "icons/icon-straight-19.png",
+            "24": "icons/icon-straight-24.png",
+            "32": "icons/icon-straight-32.png",
+            "38": "icons/icon-tilted-38.png",
+            "48": "icons/icon-tilted-48.png",
+            "128": "icons/icon-tilted-128.png"
         },
-        "default_title": "jinn mail",
+        "default_title": "Jinnmail",
         "default_popup": "popup.html"
     },
     "manifest_version": 2

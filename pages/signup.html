@@ -11,15 +11,15 @@
         <div class="dialog" role="dialog" aria-labelledby="loginDialogTitle" id="loginDialog" style="display: block;  z-index: 1;">
             <!-- <button class="focusCycler"></button> -->
             <div class="dialogHeader icon leftIcon">
-                <div class="dialogHeaderInner"><span class="dialogHeaderTitle" id="loginDialogTitle">JinnMail</span></div>
+                <div class="dialogHeaderInner"><span class="dialogHeaderTitle" id="loginDialogTitle"><img src="../styles/images/vault_4.0/Jinnmail logo w Mark - white - 128x71.png" width="128" height="71"></span></div>
             </div>
-            <div class="page-title">Signup Here</div>
+            <div class="page-title">Create Account</div>
             <div class="success-msg">Signup Success</div>
             <div class="credintials-error"></div>
             <div class="dialogContent dialogContentFixed">
                 <div dialogsection="main" id="loginView" class="lp-grid container gutter-sm">
                     <div class="small-margins">
-                        <label for="loginDialogEmail" class="label first">Email<span>*</span></label>
+                        <label for="loginDialogEmail" class="label first"><strong>Email Address</strong><span>*</span> (where Jinnmail emails will be delivered)</label>
                                            </div>
                     <div class="dropdownContainer" style="margin: 0px;">
                         <div class="relative">
@@ -30,7 +30,7 @@
                     <div class="email-error">Invalid Email</div>
                     <div class="row small-margins">
                         <div class="col-8">
-                            <label class="label" for="loginDialogPassword">Password<span>*</span></label>
+                            <label class="label" for="loginDialogPassword"><strong>Password</strong><span>*</span></label>
                             <label class="error-summary" for="loginDialogPassword" style="display: none;">
                                 <div id="validatorSummaryPassword" class="row">
                                     <div class="col-1">
@@ -46,7 +46,7 @@
                         <input class="dialogInput inputCapsMatter unknown" id="signUpDialogPassword" dialogfield="password"
                             type="password" spellcheck="false">
                             <div id="result"></div>
-                        <span>**Password length must be minimum 8 character and must contain at least one small alphabet, one capital alphabet, one numeric digit and one special character.</span>
+                        <span>*Minimum of 8 chars. <br>**Mix of uppercase, lowercase, numbers & special characters.</span>
                         <!-- <button class="showKeyboard" title="Use Virtual Keyboard"></button> -->
                         <div class="pull-right col-4 tabOrderChange">
                             <!-- <a id="forgotPassword" href="javascript:void(0)">Recovery Help</a> -->
@@ -54,13 +54,13 @@
                     </div>
                     <div class="password-error"></div>
                     <div class="buttons centerButtons">
-                        <button id="signUpButton" class="nbtn rbtn">Signup</button>
+                        <button id="signUpButton" class="nbtn rbtn">SIGN UP</button>
                     </div>
                     <div class="content-pull-center gutter-bottom-xl">
                         <div>
-                            <p class="hr">or</p>
+                            <p class="hr"><strong>or</strong></p>
                         </div>
-                        <button id="newToLastPassLogin">Login</button>
+                        <button id="newToLastPassLogin"><strong>LOG IN</strong></button>
                     </div>
                 </div>
             </div>
