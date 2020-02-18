@@ -31,7 +31,8 @@ Each alias is intuitive, with its related website name right inside the @jinnmai
 
 EXTENSIONS
 ----------
-[Jinnmail Chrome Web Store listing](https://chrome.google.com/webstore/detail/jinnmail-%E2%80%94-privacy-for-yo/nbeghdcngabhmanlobkjlnahdlimiejg/)
+- [Jinnmail Chrome Web Store listing](https://chrome.google.com/webstore/detail/jinnmail-%E2%80%94-privacy-for-yo/nbeghdcngabhmanlobkjlnahdlimiejg/)
+
 (others to come)
 
 
