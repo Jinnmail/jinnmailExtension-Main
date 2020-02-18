@@ -29,6 +29,12 @@ Each alias is intuitive, with its related website name right inside the @jinnmai
 
 
 
+EXTENSIONS
+----------
+[Chrome Web Store listing -- Jinnmail Chrome extension](https://chrome.google.com/webstore/detail/jinnmail-%E2%80%94-privacy-for-yo/nbeghdcngabhmanlobkjlnahdlimiejg/)
+
+
+
 GET BACK YOUR PRIVACY
 ---------------------
 🗝 Companies buy “Customer Enrichment Data” to fill in the gaps with collected knowledge from your accounts, purchases, internet activity, IP & location history, and even current whereabouts! AND THIS IS LEGAL. All they need is your email address.
@@ -82,3 +88,9 @@ WHAT’S NEXT?
 This is a privacy-focused service. Today, Jinnmail usage is anonymous and never stores any messages sent or received. Tomorrow, emphasis will be placed on building in end-to-end encryption, usage of your own PGP/GPG keys, your own domain names, and most importantly, decentralization of the database and email server. Eventually, we’ll enable your own private storage that’s local to—and synced across—your own machines as well as implementing your own private email server. 
 
 The future we envision is one that ensures Jinnmail never has access to your data & can never shut you down, so that even if we get hacked... even if the company becomes compromised… or even if Jinnmail gets shut down… the email keeps flowing uninterrupted and you’re kept safe.
+
+
+
+WEBSITE
+-------
+[Jinnmail.com website]https://jinnmail.com
