@@ -92,6 +92,17 @@ The future we envision is one that ensures Jinnmail never has access to your dat
 
 
 
+CONTRIBUTE TO PROJECT
+---------------------
+
+Join the fight. Help the project by contributing pull requests or simply by reporting bugs in the sheets below.
+
+- Review and add to: ["Issue Tracker & Suggestions - Master List"](https://go.jinnmail.com/issue-tracker)
+
+- Review and add to: ["URLs/domains with Jinnmail button display/functionality problems"](https://go.jinnmail.com/problem-urls)
+
+
+
 WEBSITE
 -------
 [Jinnmail.com website](https://jinnmail.com)
