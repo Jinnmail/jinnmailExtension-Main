@@ -244,7 +244,7 @@ $('document').ready(() => {
     $("#settings-back-btn").click(function () {
         $(".dashboard-container, .dashboard-btn, .top-right-buttons, .dashboard-msgs-icon, #search-input").show();
         $(".settings-wrapper, .settings-back-btn").hide();
-        $(".dashboard-welcome-title small").text("Manage your JinnMails");
+        $(".dashboard-welcome-title small").text("Manage Jinnmail");
         $(".reset-password-wrapper").hide();
         $(".top-buttons.top-left-buttons").hide();
         $("#userDetails").css({left: 1, position:'absolute'});
