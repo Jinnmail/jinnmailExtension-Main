@@ -1,5 +1,5 @@
 # jinnmailExt-FE
-Used for Chrome Extensions interface and logic
+jinnmailExt-FE repository is for Chrome Extension interface and logic
 
 
 README FOR ENTIRE PROJECT
@@ -31,7 +31,8 @@ Each alias is intuitive, with its related website name right inside the @jinnmai
 
 EXTENSIONS
 ----------
-[Chrome Web Store listing -- Jinnmail Chrome extension](https://chrome.google.com/webstore/detail/jinnmail-%E2%80%94-privacy-for-yo/nbeghdcngabhmanlobkjlnahdlimiejg/)
+[Jinnmail Chrome Web Store listing](https://chrome.google.com/webstore/detail/jinnmail-%E2%80%94-privacy-for-yo/nbeghdcngabhmanlobkjlnahdlimiejg/)
+(others to come)
 
 
 
@@ -93,4 +94,4 @@ The future we envision is one that ensures Jinnmail never has access to your dat
 
 WEBSITE
 -------
-[Jinnmail.com website]https://jinnmail.com
+[Jinnmail.com website](https://jinnmail.com)
