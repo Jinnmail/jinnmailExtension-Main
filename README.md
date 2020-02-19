@@ -21,15 +21,6 @@ Don’t worry, replies are masked too. Your recipient sees the same @jinnmail.co
 
 Each alias is intuitive, with its related website name right inside the @jinnmail.com address. Aliases are stored and searchable inside the Jinnmail plugin and even pops up when you’re back at that site—just like your password manager does. In fact, save to Google Passwords, Apple Keychain, 1Password, Dashlane, LastPass, Keeper & others so your email/password combo stays updated.
 
-----------
-
-
-# Extensions
-(more to come)
-
-- [Jinnmail Chrome Web Store listing](https://chrome.google.com/webstore/detail/jinnmail-%E2%80%94-privacy-for-yo/nbeghdcngabhmanlobkjlnahdlimiejg/)
-
-----------
 
 # Get back your privacy
 🗝 Companies buy “Customer Enrichment Data” to fill in the gaps with collected knowledge from your accounts, purchases, internet activity, IP & location history, and even current whereabouts! AND THIS IS LEGAL. All they need is your email address.
@@ -68,6 +59,12 @@ All code is auditable. Repository at https://github.com/jinnmail.
 ----------
 
 
+# Download Extension
+- [Jinnmail Chrome Web Store listing](https://chrome.google.com/webstore/detail/jinnmail-%E2%80%94-privacy-for-yo/nbeghdcngabhmanlobkjlnahdlimiejg/)
+
+----------
+
+
 
 # Contribute to project
 Join the fight. Help the project by contributing pull requests or simply by reporting bugs in the sheets below.
@@ -78,7 +75,8 @@ Join the fight. Help the project by contributing pull requests or simply by repo
 - Review and add to: ["URLs/domains with Jinnmail button display/functionality problems"](https://go.jinnmail.com/problem-urls)
 
 
-# Deveopment Plans
+# Help us develop
+### DEVELOPMENT PLANS
 - [Lean Development Requirements - Stage 1](https://go.jinnmail.com/stage-1-reqs)
 
 - [Front-end UI/UX Requirements](https://go.jinnmail.com/ux-reqs)
@@ -94,7 +92,7 @@ Join the fight. Help the project by contributing pull requests or simply by repo
 - [Customer Development Ideas](https://go.jinnmail.com/customer-development-ideas)
 
 
-#### COMPETITION COMPARISON
+### COMPETITION COMPARISON
 - [Competitor Market Listings Spreadsheet](https://go.jinnmail.com/competitor-listings)
 
 - [Competitor Narratives](https://go.jinnmail.com/competitor-narratives)
@@ -109,5 +107,5 @@ The future we envision is one that ensures Jinnmail never has access to your dat
 -----------------
 
 # Contact & Website
-- [Jinnmail.com website](https://jinnmail.com)
-- [github@jinnmail.org](mailto:github@jinnmail.org)
+- [Jinnmail.com](https://jinnmail.com)
+- [Contact George at github@jinnmail.org](mailto:github@jinnmail.org)
