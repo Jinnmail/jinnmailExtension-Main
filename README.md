@@ -12,7 +12,7 @@ This README represents the entire project; not just than this repository. Howeve
 
 
 
-### HOW IT WORKS 
+### HOW JINNMAIL WORKS 
 Like a password manager in your browser, Jinnmail detects email submissions & signup forms, auto-populating a new @jinnmail.com address for each. 
 
 When messages are received at any of your Jinnmail aliases, they’re relayed to your real address and immediately discarded. Within seconds, your messages arrive in your Gmail inbox (or other) with the sender’s original name/address/subject intact. You can read, reply, and interact as normal. 
