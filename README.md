@@ -1,23 +1,20 @@
 # jinnmailExt-FE
 jinnmailExt-FE repository is for Chrome Extension interface and logic
-
-
-README FOR ENTIRE PROJECT
 -------------------------
+
+# README FOR ENTIRE PROJECT
 
 This README represents the entire project; not just than this repository. However, this repository "jinnmailExt-FE" is for the Chrome extension alone. 
 
 
 
-OVERVIEW 
---------
+## OVERVIEW 
 
 The world knows your secrets by email address alone… Jinnmail hides & protects your identity with secret proxy email aliases generated on-demand. Email messages are privately forwarded to ANY inbox. All encrypted, never stored. Open-source.
 
 
 
-HOW IT WORKS 
-------------
+## HOW IT WORKS 
 
 Like a password manager in your browser, Jinnmail detects email submissions & signup forms, auto-populating a new @jinnmail.com address for each. 
 
@@ -27,32 +24,30 @@ Don’t worry, replies are masked too. Your recipient sees the same @jinnmail.co
 
 Each alias is intuitive, with its related website name right inside the @jinnmail.com address. Aliases are stored and searchable inside the Jinnmail plugin and even pops up when you’re back at that site—just like your password manager does. In fact, save to Google Passwords, Apple Keychain, 1Password, Dashlane, LastPass, Keeper & others so your email/password combo stays updated.
 
-
-
-EXTENSIONS
 ----------
+
+
+# EXTENSIONS
 - [Jinnmail Chrome Web Store listing](https://chrome.google.com/webstore/detail/jinnmail-%E2%80%94-privacy-for-yo/nbeghdcngabhmanlobkjlnahdlimiejg/)
 
-(others to come)
+- (others to come)
 
+----------
 
+# GET BACK YOUR PRIVACY
 
-GET BACK YOUR PRIVACY
----------------------
 🗝 Companies buy “Customer Enrichment Data” to fill in the gaps with collected knowledge from your accounts, purchases, internet activity, IP & location history, and even current whereabouts! AND THIS IS LEGAL. All they need is your email address.
 
 With Jinnmail, the breadcrumb trail stops here. Automatically be free of surveillance and Big Tech data tracking.
 
 
 
-TOTALLY FREE
-------------
+## TOTALLY FREE
 While the Jinnmail browser extension is in beta, please use it as much as you want, creating new @jinnmail.com addresses for all your interactions. 
 
 
 
-BENEFITS
---------
+## BENEFITS
 
 ✭ ONE-CLICK SPAM KILLER
 No more "unsubscribe." With unique addresses for each login, newsletter or app, just one click switches off their emails. Switch on again to reactivate.
@@ -75,35 +70,56 @@ Your name in a compromised database tempts hackers to access OTHER accounts by t
 ✭ OPEN-SOURCE
 All code is auditable. Repository at https://github.com/jinnmail.
 
-
-
-BETA
-----
-
-In the future, a premium/paid version may become available. During testing, note that you may see “upgrade” buttons... or “{X} number of aliases remaining”. No worries, all your aliases you create today will be grandfathered in for any future versions.
+----------
 
 
 
-WHAT’S NEXT?
-------------
+## FUTURE PLANS
 
 This is a privacy-focused service. Today, Jinnmail usage is anonymous and never stores any messages sent or received. Tomorrow, emphasis will be placed on building in end-to-end encryption, usage of your own PGP/GPG keys, your own domain names, and most importantly, decentralization of the database and email server. Eventually, we’ll enable your own private storage that’s local to—and synced across—your own machines as well as implementing your own private email server. 
 
 The future we envision is one that ensures Jinnmail never has access to your data & can never shut you down, so that even if we get hacked... even if the company becomes compromised… or even if Jinnmail gets shut down… the email keeps flowing uninterrupted and you’re kept safe.
 
-
-
-CONTRIBUTE TO PROJECT
 ---------------------
+
+
+# Contribute to project
 
 Join the fight. Help the project by contributing pull requests or simply by reporting bugs in the sheets below.
 
-- Review and add to: ["Issue Tracker & Suggestions - Master List"](https://go.jinnmail.com/issue-tracker)
+### BUGS
+
+- Review and add to: ["Issue Tracker & Suggestions - Master List"](https://go.jinnmail.com/issues-tracker)
 
 - Review and add to: ["URLs/domains with Jinnmail button display/functionality problems"](https://go.jinnmail.com/problem-urls)
 
 
+# DEVELOPMENT PLANS
+- [Lean Development Requirements - Stage 1](https://go.jinnmail.com/stage-1-reqs)
 
-WEBSITE
--------
-[Jinnmail.com website](https://jinnmail.com)
+- [Front-end UI/UX Requirements](https://go.jinnmail.com/ux-reqs)
+
+- [Admin Panel Requirements](https://go.jinnmail.com/admin-reqs)
+
+
+### BUSINESS/OPERATING PLANS
+- [Product & Business Overview](https://go.jinnmail.com/product-overview)
+
+- [Paid/Free Plan Offerings](https://go.jinnmail.com/plan-offerings)
+
+- [Customer Development Ideas](https://go.jinnmail.com/customer-development-ideas)
+
+
+#### COMPETITION COMPARISON
+- [Competitor Market Listings Spreadsheet](https://go.jinnmail.com/competitor-listings)
+
+- [Competitor Narratives](https://go.jinnmail.com/competitor-narratives)
+
+
+
+-----------------
+
+# CONTACT & WEBSITE
+
+- [Jinnmail.com website](https://jinnmail.com)
+- [github@jinnmail.org](mailto:github@jinnmail.org)
