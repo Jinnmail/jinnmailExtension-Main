@@ -15,6 +15,7 @@
     <!-- <script src="scripts/vendor/rollbar.config.js"></script>
          <script src="scripts/vendor/rollbar.min.js"></script> -->
 
+
     <div id="app" class="popup-content">
         <div class="main-container">
             <div class="manage-page ">
@@ -31,17 +32,15 @@
                                 <p id="userDetails"></p>
                             </div>
                             <div class="top-buttons top-right-buttons">
-                                <a id="setIcon" target="_blank" class="btn btn-icon btn-round btn-primary btn-settings"
-                                    style="color: white;">
-                                    <i class="fa fa-cog"></i>
-                                </a>
+                                <!--<a id="setIcon" target="_blank" class="btn btn-icon btn-round btn-primary btn-settings" style="color: white;"><i class="fa fa-cog"></i></a>-->
+                                <button id="setIcon" class="btn btn-link btn-settings" style="margin: 10px 1px 20px;"><i class="fa fa-cog"></i> Settings</button>
                             </div>
                             <div class="gogo-logo">
-                            	<a target="_blank" href="https://appclick.jinnmail.com/website"><img src="/icons/icon-tilted-128.png" border="0"></a>
+                            	<a target="_blank" href="https://appclick.jinnmail.com/website"><img src="/icons/icon-tilted-128.png" border="0" title="Visit jinnmail.com website"></a>
                             </div>
                             <br>
-                            <h2 class="dashboard-welcome-title"><small>Manage your Jinnmail</small></h2>
-                            <button class="btn btn-primary btn-round dashboard-btn" type="button" style="margin: 10px 1px 20px;">Dashboard</button>
+                            <h2 class="dashboard-welcome-title"><small>Your jinnmail aliases</small></h2>
+                            <button class="btn btn-primary btn-round dashboard-btn" type="button" style="margin: 10px 1px 20px;">Manage Aliases</button>
                             <div style="text-align: left;">
                                 <input type="text" id='search-input' placeholder="Type here to search..." style="margin: 5px; width: 100%; font-size: 14px;">
                             </div>
@@ -54,7 +53,7 @@
                                     </div>
                                 </div>
                                 <div class="pull-left" style="width: 100%;">
-                                    <span class="footer-stat"><strong id="remaining-mails"></strong> Generated aliases</span><span
+                                    <span class="footer-stat"><strong id="remaining-mails"></strong> generated aliases</span><span
                                         class="separator"> • </span>
                                     <h6 style="display: inline;"><a target="_blank" class="link footer-link upgrade-link">Upgrade</a></h6>              
                                 </div>
@@ -65,7 +64,7 @@
                             <a class="btn btn-primary btn-round" id="logoutIcon">Log Out</a>
                             <br><br>
                                 <div>
-                            	<a target="_blank" class="link footer-link upgrade-link" href="https://appclick.jinnmail.com/website">Help / Feedback?</a>
+                            	<a class="link footer-link upgrade-link" href="https://appclick.jinnmail.com/help" target="_blank">Help / Feedback?</a>
                             	</div>
                             </div>
                         </div>
@@ -91,9 +90,10 @@
                     </div>
                 </div>
             </div>
-            <div class="rate-us">Liking Jinnmail? <a target="https://appclick.jinnmail.com/chrome">Rate it.</a> 🌟</div>
+            <div class="rate-us">Liking Jinnmail? <a href="https://appclick.jinnmail.com/chrome-reviews" target="_blank">Rate it.</a> </div>
         </div>
     </div>
+
     <script src="../scripts/jQuery.js"></script>
     <script src="../scripts/dashboard.js"></script>
 </body>

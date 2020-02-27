@@ -10692,17 +10692,21 @@ select:-webkit-autofill:active {
 }
 
 .rate-us {
-  background: #2f63ad;
+  background: #CCCCCC;
   text-align: center;
-  color: #ffffff;
+  color: #333333;
   padding: 10px 5px;
   z-index: 1;
 }
 
 .rate-us a {
-  color: #ffffff;
+  color: #333333;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.rate-us a:hover {
+  background-color: #E9D200;
 }
 
 .card .btn-primary {
@@ -10990,7 +10994,14 @@ select:-webkit-autofill:active {
 }
 
 .btn.btn-settings {
-  color: #fff;
+  color: #0275D8; 
+}
+
+btn.btn-settings:focus,
+btn.btn-settings:hover {
+    color: #014c8c;
+    text-decoration: underline;
+    background-color: transparent
 }
 
 .top-left-buttons a.btn {
