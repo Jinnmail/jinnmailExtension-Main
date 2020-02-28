@@ -5,7 +5,7 @@ The world knows your secrets by email address alone… Jinnmail hides & protects
 ----------
 
 ## README FOR ENTIRE PROJECT
-This README represents the entire project; not just than this repository. However, the repository ["jinnmailExt-FE"](https://github.com/Jinnmail/jinnmailExt-FE) is for the Chrome extension alone. 
+This README represents the entire project; not just than this repository. However, the repository ["jinnmailExtension-Main"](https://github.com/Jinnmail/jinnmailExtension-Main) is for the Chrome extension alone. 
 
 ------------------
 
