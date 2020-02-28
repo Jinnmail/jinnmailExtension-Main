@@ -1,6 +1,6 @@
 {
     "name": "Jinnmail — Privacy for your email address",
-    "version": "1.0",
+    "version": "1.01",
     "description": "Camouflage your Gmail. Fight spam, hackers, surveillance with secret temporary aliases while your address stays private & spam-free.",
     "author": "Ahex Technologies<https://ahex.co>",
     "permissions": [
@@ -26,7 +26,8 @@
     }, 
     "externally_connectable": {
         "matches": [
-            "https://jinnmaildash.herokuapp.com/"
+            "https://jinnmaildash.herokuapp.com/",
+            "https://jinnmail.com/"
         ],
         "accepts_tls_channel_id": false
       },
