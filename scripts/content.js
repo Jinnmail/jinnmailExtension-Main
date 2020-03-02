@@ -140,7 +140,7 @@ $(document).ready(() => {
                             '<span>' +
                             ' <span>' + success.data[index].alias + '</span>' +
                             ' </span>' +
-                            '<div class="heading">Generated Jinn Mail</div>' +
+                            '<div class="heading"></div>' +
                             ' </div>' +
                             '<div class="mb-2 cols-2">' +
                             '<span data-toggle="tooltip" data-placement="top" title="'+success.data[index].refferedUrl+'">'+success.data[index].alias.substring(0, (success.data[index].alias.indexOf('.') < success.data[index].alias.indexOf('@'))?success.data[index].alias.indexOf('.'):success.data[index].alias.indexOf('@'))+'</span>' +
