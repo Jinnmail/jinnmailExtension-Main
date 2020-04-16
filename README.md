@@ -69,13 +69,13 @@ All code is auditable. Repository at https://github.com/jinnmail.
 # Contribute to project
 Join the fight. Help the project by contributing pull requests or simply by reporting bugs in the sheets below.
 
+
 ### BUGS
 - Review and add to: ["Issue Tracker & Suggestions - Master List"](https://go.jinnmail.com/issues-tracker)
 
 - Review and add to: ["URLs/domains with Jinnmail button display/functionality problems"](https://go.jinnmail.com/problem-urls)
 
 
-# Help us develop
 ### DEVELOPMENT PLANS
 - [Lean Development Requirements - Stage 1](https://go.jinnmail.com/stage-1-reqs)
 
