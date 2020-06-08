@@ -74,6 +74,7 @@ $('document').ready(() => {
                     chrome.storage.sync.set({ sessionToken: success.data.sessionToken, isLogged: 1 ,email:email }, function () {
                         // console.log('Value is set to ');
                         window.location.href = '../pages/dashboard.html';
+                        localStorage.setItem('jinnmailToken', success.data.sessionToken);
                     });
                 },
                 error: (err) => {
