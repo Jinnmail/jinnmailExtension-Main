@@ -1,5 +1,6 @@
 $('document').ready(() => {
     let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
+    // let url = 'http://localhost:3000/api/v1/';
     // let url = 'http://localhost:9001/api/v1/';
     $('#logoutIcon').click((e) => {
         chrome.storage.sync.clear(() => {
@@ -258,6 +259,7 @@ $('document').ready(() => {
     $('.dashboard-btn').click((e) => {
         // console.log('here ');
         chrome.tabs.create({ url: 'https://jinnmaildash.herokuapp.com/index.html' })
+        // chrome.tabs.create({ url: 'http://localhost:8000/index.html' })
         // chrome.tabs.create({ url: 'http://localhost/jinnmail-dash/index.html' })
     })
 

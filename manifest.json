@@ -26,7 +26,7 @@
     }, 
     "externally_connectable": {
         "matches": [
-            "https://jinnmaildash.herokuapp.com/",
+            "https://jinnmaildash.herokuapp.com/",  
             "https://jinnmail.com/"
         ],
         "accepts_tls_channel_id": false
