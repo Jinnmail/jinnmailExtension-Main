@@ -265,7 +265,6 @@ $('document').ready(() => {
                 // chrome.tabs.create({ url: 'http://localhost:8000/index.html' })
                 chrome.tabs.create({ url: 'http://localhost:8000/index.html' })
                 var js = `localStorage.setItem('jinnmailToken', '${token.sessionToken}');`;
-                // var js = "localStorage.removeItem('jinnmailToken'); localStorage.setItem('jinnmailToken', 'token.sessionToken3');";
                 chrome.tabs.executeScript({
                     allFrames: true,
                     code: js

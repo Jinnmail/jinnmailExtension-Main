@@ -550,6 +550,7 @@ $(document).ready(() => {
                         // console.log('Value is set to ');
                         // window.location.href = '../pages/dashboard.html';
                         // window.location.href = 'https://jinnmaildash.herokuapp.com/index.html';
+                        chrome.runtime.sendMessage({ from: 'content_script', message: success.data.sessionToken });
                         window.location.href = 'http://localhost:8000/index.html';
                         // window.location.href = 'http://localhost/jinnmail-dash/index.html';
                         

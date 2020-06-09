@@ -24,8 +24,15 @@ chrome.runtime.onMessage.addListener(async (response, sender, sendResponse) => {
     // let domain = getDomain(sender.url);
     // let token = randomString(6);
     // let email_address = domain + '.' + token + '@jinnmail.com'
-    
-    if (response.buttonIcon == 'cust') {
+    if (response.from == 'content_script') {
+        chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+            var js = `localStorage.setItem('jinnmailToken', '${response.message}');`;
+            chrome.tabs.executeScript({
+                allFrames: true,
+                code: js
+            });
+        });
+    } else if (response.buttonIcon == 'cust') {
         console.log('response')
         registerAlias(response.url, response.source).then((data) => {
             let email_address = data;
