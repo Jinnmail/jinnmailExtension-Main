@@ -1,8 +1,14 @@
 // console.log('content script jinnmail loaded');
 $(document).ready(() => {
+    const JM_DASHBOARD_URL = 'https://jinnmaildash.herokuapp.com/index.html';
+    const JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
+    // const JM_DASHBOARD_URL = 'http://localhost:8000/index.html';
+    // const JM_API_URL = 'http://localhost:3000/api/v1/';
+
+    let url = JM_API_URL;
 
     // let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
-    let url = 'http://localhost:3000/api/v1/';
+    // let url = 'http://localhost:3000/api/v1/';
     // let url = 'http://localhost:9001/api/v1/'
 
     const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -199,8 +205,9 @@ $(document).ready(() => {
 
     }
     
+    if(window.location.href === JM_DASHBOARD_URL)
     // if(window.location.href === 'https://jinnmaildash.herokuapp.com/index.html')
-    if(window.location.href === 'http://localhost:8000/index.html')
+    // if(window.location.href === 'http://localhost:8000/index.html')
     // if(window.location.href === 'http://localhost/jinnmail-dash/index.html')
     {
         init();
@@ -550,8 +557,9 @@ $(document).ready(() => {
                         // console.log('Value is set to ');
                         // window.location.href = '../pages/dashboard.html';
                         chrome.runtime.sendMessage({ from: 'content_script', message: success.data.sessionToken });
+                        window.location.href = JM_DASHBOARD_URL;
                         // window.location.href = 'https://jinnmaildash.herokuapp.com/index.html';
-                        window.location.href = 'http://localhost:8000/index.html';
+                        // window.location.href = 'http://localhost:8000/index.html';
                         // window.location.href = 'http://localhost/jinnmail-dash/index.html';
                         
                     });

@@ -1,6 +1,14 @@
 // console.log('background js');
+
+const JM_DASHBOARD_URL = 'https://jinnmaildash.herokuapp.com/index.html';
+const JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
+// const JM_DASHBOARD_URL = 'http://localhost:8000/index.html';
+// const JM_API_URL = 'http://localhost:3000/api/v1/';
+
+let url = JM_API_URL;
+
 // let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
-let url = 'http://localhost:3000/api/v1/';
+// let url = 'http://localhost:3000/api/v1/';
 // let url = 'http://localhost:9001/api/v1/'
 let generateMaskHandler = (info, tab) => {
     // let domain = getDomain(info.pageUrl);

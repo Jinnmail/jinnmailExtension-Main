@@ -1,6 +1,13 @@
 $('document').ready(() => {
+    const JM_DASHBOARD_URL = 'https://jinnmaildash.herokuapp.com/index.html';
+    const JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
+    // const JM_DASHBOARD_URL = 'http://localhost:8000/index.html';
+    // const JM_API_URL = 'http://localhost:3000/api/v1/';
+
+    let url = JM_API_URL;
+
     // let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
-    let url = 'http://localhost:3000/api/v1/';
+    // let url = 'http://localhost:3000/api/v1/';
     // let url = 'http://localhost:9001/api/v1/';
     $('#logoutIcon').click((e) => {
         chrome.storage.sync.clear(() => {
@@ -261,8 +268,9 @@ $('document').ready(() => {
         
         chrome.storage.sync.get(['sessionToken'], (token) => {
             if (token) {
+                chrome.tabs.create({ url: JM_DASHBOARD_URL })
                 // chrome.tabs.create({ url: 'https://jinnmaildash.herokuapp.com/index.html' })
-                chrome.tabs.create({ url: 'http://localhost:8000/index.html' })
+                // chrome.tabs.create({ url: 'http://localhost:8000/index.html' })
                 var js = `localStorage.setItem('jinnmailToken', '${token.sessionToken}');`;
                 chrome.tabs.executeScript({
                     allFrames: true,
