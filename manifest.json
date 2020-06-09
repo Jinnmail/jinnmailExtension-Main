@@ -1,8 +1,8 @@
 {
     "name": "Jinnmail — Privacy for your email address",
-    "version": "1.01",
+    "version": "1.02",
     "description": "Camouflage your Gmail. Fight spam, hackers, surveillance with secret temporary aliases while your address stays private & spam-free.",
-    "author": "Ahex Technologies<https://ahex.co>",
+    "author": "Jinnmail <https://jinnmail.com>",
     "permissions": [
         "activeTab",
         "storage",
