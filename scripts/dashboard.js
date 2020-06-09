@@ -258,11 +258,10 @@ $('document').ready(() => {
     //open webpage
     $('.dashboard-btn').click((e) => {
         // console.log('here ');
-        // chrome.tabs.create({ url: 'https://jinnmaildash.herokuapp.com/index.html' })
         
         chrome.storage.sync.get(['sessionToken'], (token) => {
             if (token) {
-                // chrome.tabs.create({ url: 'http://localhost:8000/index.html' })
+                // chrome.tabs.create({ url: 'https://jinnmaildash.herokuapp.com/index.html' })
                 chrome.tabs.create({ url: 'http://localhost:8000/index.html' })
                 var js = `localStorage.setItem('jinnmailToken', '${token.sessionToken}');`;
                 chrome.tabs.executeScript({
