@@ -1,6 +1,6 @@
 // console.log('background js');
-let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
-// let url = 'http://localhost:3000/api/v1/';
+// let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
+let url = 'http://localhost:3000/api/v1/';
 // let url = 'http://localhost:9001/api/v1/'
 let generateMaskHandler = (info, tab) => {
     // let domain = getDomain(info.pageUrl);

@@ -1,8 +1,8 @@
 // console.log('content script jinnmail loaded');
 $(document).ready(() => {
 
-    let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
-    // let url = 'http://localhost:3000/api/v1/';
+    // let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
+    let url = 'http://localhost:3000/api/v1/';
     // let url = 'http://localhost:9001/api/v1/'
 
     const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -17,7 +17,7 @@ $(document).ready(() => {
         console.log("Removed alias");
     })
 
-    // $("input").keypress(function(e){
+    // $("input").keypress(funxfction(e){
     //     // console.log("e: "+ JSON.stringify(e))
     //     if(e.keyCode === 13){
     //         e.preventDefault();
@@ -118,7 +118,6 @@ $(document).ready(() => {
             chrome.storage.sync.get(['sessionToken'], (token) => {
                 if (token){
                     // console.log("token is:",token)
-                    localStorage.setItem('jinnmailToken', token.sessionToken);
                     resolve(token.sessionToken);
                 }
                 else
@@ -200,8 +199,8 @@ $(document).ready(() => {
 
     }
     
-    if(window.location.href === 'https://jinnmaildash.herokuapp.com/index.html')
-    // if(window.location.href === 'http://localhost:8000/index.html')
+    // if(window.location.href === 'https://jinnmaildash.herokuapp.com/index.html')
+    if(window.location.href === 'http://localhost:8000/index.html')
     // if(window.location.href === 'http://localhost/jinnmail-dash/index.html')
     {
         init();
@@ -550,8 +549,8 @@ $(document).ready(() => {
                     chrome.storage.sync.set({ sessionToken: success.data.sessionToken, isLogged: 1 }, function () {
                         // console.log('Value is set to ');
                         // window.location.href = '../pages/dashboard.html';
-                        window.location.href = 'https://jinnmaildash.herokuapp.com/index.html';
-                        // window.location.href = 'http://localhost:8000/index.html';
+                        // window.location.href = 'https://jinnmaildash.herokuapp.com/index.html';
+                        window.location.href = 'http://localhost:8000/index.html';
                         // window.location.href = 'http://localhost/jinnmail-dash/index.html';
                         
                     });

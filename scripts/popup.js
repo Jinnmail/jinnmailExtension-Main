@@ -34,8 +34,8 @@ $('document').ready(() => {
     // clearing local storage
     localStorage.clear();
 
-    let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
-    // let url = 'http://localhost:3000/api/v1/';
+    // let url = 'https://jinnmailapp.herokuapp.com/api/v1/';
+    let url = 'http://localhost:3000/api/v1/';
     // let url = 'http://localhost:9001/api/v1/'
     $('#logInButton').click(() => {
         // clearing local storage
@@ -74,7 +74,6 @@ $('document').ready(() => {
                     chrome.storage.sync.set({ sessionToken: success.data.sessionToken, isLogged: 1 ,email:email }, function () {
                         // console.log('Value is set to ');
                         window.location.href = '../pages/dashboard.html';
-                        localStorage.setItem('jinnmailToken', success.data.sessionToken);
                     });
                 },
                 error: (err) => {
