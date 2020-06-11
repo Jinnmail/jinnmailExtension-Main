@@ -75,7 +75,7 @@ $(document).ready(() => {
                         if(input.type === "hidden" || input.style.display === "none"){
                             divIcon.style.display = "none";
                         }
-                        buttonIcon = document.createElement('button');
+                        buttonIcon = document.createElement('div');
                         buttonIcon.className = "jinnmail-icon-button";
                         // buttonIcon.id = `jnnmbtn`;
 
@@ -107,12 +107,12 @@ $(document).ready(() => {
                         $('.jinnmail-icon-div').css("height", ((input.offsetHeight == 0)? input.style.height : input.offsetHeight + "px"));
                         $('.jinnmail-icon-div').css("width", ((input.offsetWidth == 0)? input.style.width : input.offsetWidth + "px"))
                     }
-                    $(input).keypress(function(e){
-                        // console.log("e: "+ JSON.stringify(e))
-                        if(e.keyCode === 13){
-                            e.preventDefault();
-                        }
-                    });
+                    // $(input).keypress(function(e){
+                    //     // console.log("e: "+ JSON.stringify(e))
+                    //     if(e.keyCode === 13){
+                    //         e.preventDefault();
+                    //     }
+                    // });
                 }
             }
         }, 1500);
