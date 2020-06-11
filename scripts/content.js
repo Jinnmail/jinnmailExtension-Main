@@ -1,9 +1,9 @@
 // console.log('content script jinnmail loaded');
 $(document).ready(() => {
-    const JM_DASHBOARD_URL = 'https://jinnmaildash.herokuapp.com/index.html';
-    const JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
-    // const JM_DASHBOARD_URL = 'http://localhost:8000/index.html';
-    // const JM_API_URL = 'http://localhost:3000/api/v1/';
+    // const JM_DASHBOARD_URL = 'https://jinnmaildash.herokuapp.com/index.html';
+    // const JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
+    const JM_DASHBOARD_URL = 'http://localhost:8000/index.html';
+    const JM_API_URL = 'http://localhost:3000/api/v1/';
 
     let url = JM_API_URL;
 
@@ -261,9 +261,9 @@ $(document).ready(() => {
         //alias = 'http://'+alias +'.com'
         if(domainAlias)
         {
-            checkAlias(`${alias}.${domainAlias}@jinnmail.com`)
+            checkAlias(`${alias}.${domainAlias}@jinnmail.com`, `${alias}@jinnmail.com`, `${domainAlias}@jinnmail.com`)
         }else{
-            checkAlias(`${alias}@jinnmail.com`)
+            checkAlias(`${alias}@jinnmail.com`, alias, domainAlias)
         }
         console.log(alias);
         // chrome.runtime.sendMessage({ url: alias, source: "cust", res: 'ok', buttonIcon: 'cust' }, (res) => {
@@ -278,9 +278,28 @@ $(document).ready(() => {
         // }, 2000)
     })
 
-    function checkAlias(link) {
+    function checkAlias(link, alias, domainAlias) {
         chrome.storage.sync.get(['sessionToken'], (token) => {
             if (token){
+                function emailAddressAllowed(email) {
+                    var emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+                
+                    if (!email)
+                        return false;
+                    if(email.length > 254)
+                        return false;
+                    var valid = emailRegex.test(email);
+                    if(!valid)
+                        return false;
+                    var parts = email.split("@");
+                    if(parts[0].length > 64)
+                        return false;
+                    var domainParts = parts[1].split(".");
+                    if(domainParts.some(function(part) { return part.length > 63; }))
+                        return false;
+                
+                    return true;
+                }
                 // console.log("token is:",token.sessionToken)
                 function matchAlias(alias) {
                     // console.log(alias.alias+"---"+link)
@@ -314,8 +333,21 @@ $(document).ready(() => {
                         request.setRequestHeader("Authorization", token.sessionToken);
                     },
                     success: (success) => {
-                        console.log(JSON.stringify(success));
-                        (success.data.filter(matchAlias).length>0)?AliasFound():AliasNotFound();
+                        if (emailAddressAllowed(link)) {
+                            console.log(JSON.stringify(success));
+                            (success.data.filter(matchAlias).length>0)?AliasFound():AliasNotFound();
+                        } else {
+                            if (!emailAddressAllowed(alias)) {
+                                $("#custom-alias").css({
+                                    "border":"2px solid red"
+                                })
+                            }
+                            if (!emailAddressAllowed(domainAlias)) {
+                                $("#custom-domain-alias").css({
+                                    "border":"2px solid red"
+                                })
+                            }
+                        }
                     },
                     error: (err) => {
                         // alert(err.responseJSON.error)
