@@ -1,9 +1,7 @@
 // console.log('content script jinnmail loaded');
 $(document).ready(() => {
-    const JM_DASHBOARD_URL = 'https://jinnmaildash.herokuapp.com/index.html';
-    const JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
-    // const JM_DASHBOARD_URL = 'http://localhost:8000/index.html';
-    // const JM_API_URL = 'http://localhost:3000/api/v1/';
+    const JM_DASHBOARD_URL = 'https://jinnmaildash.herokuapp.com/index.html', JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
+    // const JM_DASHBOARD_URL = 'http://localhost:8000/index.html', JM_API_URL = 'http://localhost:3000/api/v1/';
 
     let url = JM_API_URL;
 
@@ -413,13 +411,13 @@ $(document).ready(() => {
 
 //     }
 
-//     $(document).on('click', '.jinnmail-icon-button', (e) => {
-//         // console.log(e)
-//         // console.log(e.target.value)
-//         e.preventDefault();
-//         chrome.runtime.sendMessage({ url: location.hostname, value: e.target.value, res: 'ok', buttonIcon: buttonIcon }, (res) => {
-//         });
-//     });
+    $(document).on('click', '.jinnmail-icon-button', (e) => {
+        // console.log(e)
+        // console.log(e.target.value)
+        e.preventDefault();
+        chrome.runtime.sendMessage({ url: location.hostname, value: e.target.value, res: 'ok', buttonIcon: buttonIcon }, (res) => {
+        });
+    });
 
 //     $(document).delegate(".onoff", "click", function (e) {
 //         e.stopImmediatePropagation();
