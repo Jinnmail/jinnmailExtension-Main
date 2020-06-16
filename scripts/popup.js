@@ -1,5 +1,21 @@
 // console.log('popup js');
 $('document').ready(() => {
+    function decoder(base64url) {
+        try {
+            //Convert base 64 url to base 64
+            var base64 = base64url.replace('-', '+').replace('_', '/')
+            //atob() is a built in JS function that decodes a base-64 encoded string
+            var utf8 = atob(base64)
+            //Then parse that into JSON
+            var json = JSON.parse(utf8)
+            //Then make that JSON look pretty
+            var json_string = JSON.stringify(json, null, 4)
+        } catch (err) {
+            json_string = "Bad Section.\nError: " + err.message
+        }
+        return json_string
+    }
+
     const JM_DASHBOARD_URL = 'https://jinnmail.com/account', JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
     // const JM_DASHBOARD_URL = 'http://localhost:8000/index.html', JM_API_URL = 'http://localhost:3000/api/v1/';
 
@@ -21,7 +37,10 @@ $('document').ready(() => {
         $('#loginDialogPassword').val(passOld);
     }
     chrome.storage.sync.get(['sessionToken','verified'], (result) => {
-      
+        const jinnmailToken = JSON.parse(atob(result.sessionToken.split('.')[1]));
+        if (Date.now() >= jinnmailToken.exp * 1000) {
+            return
+        }
         if (result.sessionToken) {
             window.location.href = '../pages/dashboard.html';
         }else if(result.verified==false){
