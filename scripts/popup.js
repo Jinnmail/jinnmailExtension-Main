@@ -1,5 +1,8 @@
 // console.log('popup js');
 $('document').ready(() => {
+    const JM_DASHBOARD_URL = 'https://jinnmail.com/account', JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
+    // const JM_DASHBOARD_URL = 'http://localhost:8000/index.html', JM_API_URL = 'http://localhost:3000/api/v1/';
+
     function decoder(base64url) {
         try {
             //Convert base 64 url to base 64
@@ -15,9 +18,6 @@ $('document').ready(() => {
         }
         return json_string
     }
-
-    const JM_DASHBOARD_URL = 'https://jinnmail.com/account', JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
-    // const JM_DASHBOARD_URL = 'http://localhost:8000/index.html', JM_API_URL = 'http://localhost:3000/api/v1/';
 
     let url = JM_API_URL;
 

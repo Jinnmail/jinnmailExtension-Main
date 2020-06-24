@@ -192,7 +192,8 @@ let registerAlias = (siteurl, sourceType) => {
                     resolve(alias.data.alias)
                 } else {
                     console.error(alias);
-                    registerAlias(siteurl, sourceType);
+                    reject();
+                    // registerAlias(siteurl, sourceType);
                 }
             }
             xhr.send(json);
