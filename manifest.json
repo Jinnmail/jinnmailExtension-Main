@@ -1,6 +1,6 @@
 {
     "name": "Jinnmail — Privacy for your email address",
-    "version": "1.32",
+    "version": "1.33.2",
     "description": "Camouflage your Gmail. Fight spam, hackers, surveillance with secret temporary aliases while your address stays private & spam-free.",
     "author": "Jinnmail <https://jinnmail.com>",
     "permissions": [
@@ -27,7 +27,8 @@
     "externally_connectable": {
         "matches": [
             "https://jinnmail.com/account/",
-            "https://jinnmail.com/"
+            "https://jinnmail.com/",
+            "https://account.jinnmail.com/"		
         ],
         "accepts_tls_channel_id": false
       },
