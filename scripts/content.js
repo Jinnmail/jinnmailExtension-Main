@@ -1,6 +1,7 @@
 // console.log('content script jinnmail loaded');
 $(document).ready(() => {
-    const JM_DASHBOARD_URL = 'https://jinnmail.com/account', JM_API_URL = 'https://jinnmailapp.herokuapp.com/api/v1/';
+  const JM_DASHBOARD_URL = 'https://account.jinnmail.com/index.html', JM_API_URL = 'https://whatismyname2.xyz/api/v1/'; // 'https://jinnmailapp.herokuapp.com/api/v1/';
+    // const JM_DASHBOARD_URL = 'https://jinnmaildashtest.herokuapp.com/index.html', JM_API_URL = 'https://jinnmailapptest.herokuapp.com/api/v1/';
     // const JM_DASHBOARD_URL = 'http://localhost:8000/index.html', JM_API_URL = 'http://localhost:3000/api/v1/';
 
     let url = JM_API_URL;
