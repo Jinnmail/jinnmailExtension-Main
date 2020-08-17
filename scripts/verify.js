@@ -1,6 +1,6 @@
-const JM_DASHBOARD_URL = 'https://account.jinnmail.com', JM_API_URL = 'https://whatismyname2.xyz/api/v1/'; // 'https://jinnmailapp.herokuapp.com/api/v1/';
+// const JM_DASHBOARD_URL = 'https://account.jinnmail.com', JM_API_URL = 'https://whatismyname2.xyz/api/v1/'; // 'https://jinnmailapp.herokuapp.com/api/v1/';
 // const JM_DASHBOARD_URL = 'https://testling.xyz', JM_API_URL = 'https://api.testling.xyz/api/v1/';
-// const JM_DASHBOARD_URL = 'http://localhost:8000', JM_API_URL = 'http://localhost:3000/api/v1/';
+const JM_DASHBOARD_URL = 'http://localhost:3001', JM_API_URL = 'http://localhost:3000/api/v1/';
 
 let url = JM_API_URL;
 
@@ -30,12 +30,14 @@ $('#verifyButton').click((e)=>{
                         // console.log('Value is set to ');
                         window.location.href = '../popup.html';
                     });
+                    chrome.storage.local.set({"verifyCode": false}, function() {})
                 },
                 error: (err) => {
                     // alert(err.responseJSON.error)
                     $(".credintials-error").text(err.responseJSON.error)
                     $('#succMsg').hide();
                     $(".credintials-error").show()
+                    chrome.storage.local.set({"verifyCode": false}, function() {})
                 },
                 contentType: 'application/json'
             });

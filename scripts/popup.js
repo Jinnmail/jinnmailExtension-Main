@@ -1,8 +1,21 @@
 // console.log('popup js');
 $('document').ready(() => {
-    const JM_DASHBOARD_URL = 'https://account.jinnmail.com', JM_API_URL = 'https://whatismyname2.xyz/api/v1/'; // 'https://jinnmailapp.herokuapp.com/api/v1/';
+    // const JM_DASHBOARD_URL = 'https://account.jinnmail.com', JM_API_URL = 'https://whatismyname2.xyz/api/v1/'; // 'https://jinnmailapp.herokuapp.com/api/v1/';
     // const JM_DASHBOARD_URL = 'https://testling.xyz', JM_API_URL = 'https://api.testling.xyz/api/v1/';
-    // const JM_DASHBOARD_URL = 'http://localhost:8000', JM_API_URL = 'http://localhost:3000/api/v1/';
+    const JM_DASHBOARD_URL = 'http://localhost:3001', JM_API_URL = 'http://localhost:3000/api/v1/';
+
+    chrome.storage.local.get("verifyCode", function(res) {
+      if (res.verifyCode === true) {
+        window.location.href = '../pages/verificationCode.html';
+        // chrome.storage.local.set({"verifyCode": false}, function() {})
+      }
+    });
+
+    // alert(localStorage.getItem('verifyCode'))
+    // if (localStorage.getItem('verifyCode')) {
+    //   window.location.href = '../pages/verificationCode.html';
+    //   localStorage.setItem('verifyCode', false);
+    // }
 
     function decoder(base64url) {
         try {
@@ -283,6 +296,14 @@ $('document').ready(() => {
                     $(".success-msg").show();
                     chrome.storage.sync.set({ verified:false,email:email }, function () {
                         // console.log('Value is set to ');
+                        chrome.storage.local.set({"verifyCode": true}, function() {})
+                        // chrome.storage.local.get("verifyCode", function(res) {
+                        //   if (res.verifyCode === true) {
+                        //     chrome.storage.local.set({"verifyCode": false}, function() {})
+                        //   } else {
+                        //     chrome.storage.local.set({"verifyCode": true}, function() {})
+                        //   }
+                        // });
                         window.location.href = '../pages/verificationCode.html';
                     });
                 },
