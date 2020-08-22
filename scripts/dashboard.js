@@ -1,7 +1,7 @@
 $('document').ready(() => {
     // const JM_DASHBOARD_URL = 'https://account.jinnmail.com/dashboard', JM_API_URL = 'https://whatismyname2.xyz/api/v1/'; // 'https://jinnmailapp.herokuapp.com/api/v1/';
-    // const JM_DASHBOARD_URL = 'https://testling.xyz/dashboard', JM_API_URL = 'https://api.testling.xyz/api/v1/';
-    const JM_DASHBOARD_URL = 'http://localhost:3001/dashboard', JM_API_URL = 'http://localhost:3000/api/v1/';
+    const JM_DASHBOARD_URL = 'https://testling.xyz/dashboard', JM_API_URL = 'https://api.testling.xyz/api/v1/';
+    // const JM_DASHBOARD_URL = 'http://localhost:3001/dashboard', JM_API_URL = 'http://localhost:3000/api/v1/';
 
     let url = JM_API_URL;
 
@@ -267,7 +267,6 @@ $('document').ready(() => {
         
         chrome.storage.sync.get(['sessionToken'], (token) => {
             if (token) {
-                chrome.tabs.create({ url: JM_DASHBOARD_URL })
                 // chrome.tabs.create({ url: 'https://jinnmaildash.herokuapp.com/index.html' })
                 // chrome.tabs.create({ url: 'http://localhost:8000/index.html' })
                 var js = `localStorage.setItem('jinnmailToken', '${token.sessionToken}');`;
@@ -275,6 +274,7 @@ $('document').ready(() => {
                     allFrames: true,
                     code: js
                 });
+                chrome.tabs.create({ url: JM_DASHBOARD_URL })
             }
         });
         // chrome.tabs.create({ url: 'http://localhost/jinnmail-dash/index.html' })
