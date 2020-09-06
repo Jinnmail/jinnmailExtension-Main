@@ -28,7 +28,9 @@
         "matches": [
             "https://jinnmail.com/account/",
             "https://jinnmail.com/",
-            "https://account.jinnmail.com/"		
+            "https://account.jinnmail.com/*", 
+            "http://localhost:3001/*", 
+            "https://testling.xyz/*"
         ],
         "accepts_tls_channel_id": false
       },

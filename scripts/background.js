@@ -1,8 +1,8 @@
 // console.log('background js');
 
 // const JM_DASHBOARD_URL = 'https://account.jinnmail.com/dashboard', JM_API_URL = 'https://whatismyname2.xyz/api/v1/'; // 'https://jinnmailapp.herokuapp.com/api/v1/';
-const JM_DASHBOARD_URL = 'https://testling.xyz/dashboard', JM_API_URL = 'https://api.testling.xyz/api/v1/';
-// const JM_DASHBOARD_URL = 'http://localhost:3001/dashboard', JM_API_URL = 'http://localhost:3000/api/v1/';
+// const JM_DASHBOARD_URL = 'https://testling.xyz/dashboard', JM_API_URL = 'https://api.testling.xyz/api/v1/';
+const JM_DASHBOARD_URL = 'http://localhost:3001/dashboard', JM_API_URL = 'http://localhost:3000/api/v1/';
 
 let url = JM_API_URL;
 
@@ -26,6 +26,19 @@ let generateMaskHandler = (info, tab) => {
 //Listener from content script
 
 let aliasList = {};
+
+// alert(chrome.runtime.id)
+chrome.runtime.onMessageExternal.addListener(async (request, sender, sendResponse) => {
+    if (request) {
+        if (request.message) {
+            if (request.message == "version") {
+                sendResponse({version: '1.0'});
+            }
+        }
+    }
+    return true;
+  }
+);
 
 chrome.runtime.onMessage.addListener(async (response, sender, sendResponse) => {
     // let domain = getDomain(sender.url);
